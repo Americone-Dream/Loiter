@@ -41,3 +41,15 @@ h1,p{
     text-align: center;
     background: #f44336;
 }
+
+
+#autocomplete-input {
+    border: none;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#searchIcon{
+    color: #f44336;
+}
