@@ -42,3 +42,13 @@ h1,p{
     background: #f44336;
 }
 
+#autocomplete-input {
+    border: none;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+ #searchIcon{
+     color: #f44336;
+ }
