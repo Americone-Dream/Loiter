@@ -12,12 +12,20 @@
     background: url(style.css) no-repeat;
     background-size: cover;
 }
-.container{
-    background: white;
-    border: 1px solid black;
-    border-radius: 15px 15px 15px 15px;
-    box-shadow: 0px 3px 8px black;
-}
+
 h1,p{
     font-family: 'Playfair Display', serif;
+}
+
+.input-field{
+    border-radius: 10px;
+}
+::placeholder{
+    color: black;
+    opacity: .7;
+}
+
+#searchButton{
+    height: 100%;
+    margin: auto;
 }

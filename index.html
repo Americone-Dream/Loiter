@@ -16,12 +16,12 @@
         
 </head>
 <body>
-    <video autoplay loop muted poster id='background'>
+    <!-- <video autoplay loop muted poster id='background'>
 		<source src="assets/images/background.mp4" type='video/mp4'>
-	</video>
+	</video> -->
 
-
-    <div class="container landingPage">
+<div class="container-fluid red">
+    <div class="container">
         <div class="row">
             <div class="col s12">
                 <h1>Some Really Cool Name</h1>
@@ -29,15 +29,21 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">textsms</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">Search Events</label>
+                <div class="row white">
+                    <div class="input-field col s8 m9 l10">
+                        <i id="searchIcon" class="material-icons prefix">search</i>
+                        <input type="text" id="autocomplete-input" placeholder="Search Events" class="autocomplete">
+                    </div>
+                    <br><br>
+                    <div class="col s4 m3 l2">
+                        <button id="searchButton" class="btn btn-responsive red">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+    <div class="container white">
         <div class="row">
             <div class="col s12 m6 l4" id="popularEventCard1">
                 <div class="card popularEvent">
