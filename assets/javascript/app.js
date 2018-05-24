@@ -65,12 +65,13 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             //venue info/stats
             var venueInfo = result.events[0].venue.name;
             var venueAddy = result.events[0].venue.address;
-            console.log(venueInfo);
+            var venueZip = result.events[0].venue.extended_address;
             
             var br = $('<br>');
             $('#eventInfo').append('Venue: ' + venueInfo);
             $('#eventInfo').append(br);
             $('#eventInfo').append('Address: ' + venueAddy);
+            $('#eventInfo').append(venueZip);
         // }
         
         
