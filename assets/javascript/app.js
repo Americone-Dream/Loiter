@@ -18,7 +18,7 @@ $(document).ready(function(){
 // VARIABLES
 //========================================================================================================================
 
-var title = '';
+
 
 
 
@@ -29,12 +29,6 @@ var title = '';
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
-$(document).ready(function() {
-function splitWord(x){
-    x = title.split('-', 1);
-    
-    return x;
-}
 
 
 
@@ -53,14 +47,31 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
         }).then(function(response) { 
         var result = response;
         console.log(result);
-        for (let i = 0; i < 2; i++){
-            title = result.events[i].title;
+        // for (let i = 0; i < 3; i++){
+            //start title
+            var title = result.events[0].title;
             console.log(title);
-            splitWord(i);
-            $('#event').text(splitWord);
-        }
+            $('#title').text(title);
+            var split = title.split('-', 1);
+            $('#event').text(split);
+            //start url
+            var link = result.events[0].url;
+            console.log(link);
+            $('#link').attr('href', link);
+            //start img
+            var img = result.events[0].performers[0].image;
+            console.log(img);
+            $('#img').attr('src', img);
+            //venue info/stats
+            var venueInfo = result.events[0].venue.name;
+            var venueAddy = result.events[0].venue.address;
+            console.log(venueInfo);
+            
+            var br = $('<br>');
+            $('#eventInfo').append('Venue: ' + venueInfo);
+            $('#eventInfo').append(br);
+            $('#eventInfo').append('Address: ' + venueAddy);
+        // }
         
         
         });
-
-    });//end of document check
