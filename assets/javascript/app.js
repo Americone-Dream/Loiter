@@ -43,7 +43,6 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTU5MjJ8MTUyNzEy
           url: queryURL,
           method: "GET"
         }).then(function(response) { 
-        var result = response.data;
-        console.log(result);
-        
+        console.log(response);
+        $()
         });
