@@ -1,3 +1,6 @@
+body{
+    background: black;
+}
 #background {
     position: fixed;
     top: 50%;
@@ -15,12 +18,13 @@
 .container{
     background: white;
     border: 1px solid black;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 0px 3px 8px black;
 }
-h1,p,label{
+h1{
     font-family: 'Playfair Display', serif;
     text-shadow: -1px -1px 1px #aaa,
              0px 4px 1px rgba(0,0,0,0.5),
-             4px 4px 5px rgba(0,0,0,0.7),
-             0px 0px 7px rgba(0,0,0,0.4);
+             2px 2px 3px rgba(0,0,0,0.7),
+             0px 0px 5px rgba(0,0,0,0.4);
 }
