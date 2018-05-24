@@ -37,3 +37,11 @@ $(document).ready(function(){
 
 
 });
+
+// var queryURL =
+//     $.ajax({
+//           url: queryURL,
+//           method: "GET"
+//         }).then(function(response) { 
+//         var result = response.data;
+//         console.log(result);
