@@ -51,8 +51,8 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             //start title
             var title = result.events[0].title;
             console.log(title);
-            $('#title').text(title);
             var split = title.split('-', 1);
+            $('#title').text(split);
             $('#event').text(split);
             //start url
             var link = result.events[0].url;
@@ -66,12 +66,19 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             var venueInfo = result.events[0].venue.name;
             var venueAddy = result.events[0].venue.address;
             var venueZip = result.events[0].venue.extended_address;
-            
-            var br = $('<br>');
-            $('#eventInfo').append('Venue: ' + venueInfo);
-            $('#eventInfo').append(br);
-            $('#eventInfo').append('Address: ' + venueAddy);
-            $('#eventInfo').append(venueZip);
+            var avgPrice = result.events[0].stats.average_price;
+            var lowPrice = result.events[0].stats.lowest_price;
+            var venueTime = result.events[0].venue.datetime_local;
+            venueTime = moment(venueTime).format('LLLL');
+            console.log(venueTime);
+            //this is where we append all info inside card
+            $('#eventInfo').append('<p>Venue: <br>' + venueInfo + '</p><br>');
+            $('#eventInfo').append('<p>Address: <br>' + venueAddy+ '<br>');
+            $('#eventInfo').append(venueZip + '</p><br>');
+            $('#eventInfo').append('<p>Average Price: $' + avgPrice+ '</p>');
+            $('#eventInfo').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+            $('#eventInfo').append('<p>Event Time: <br>' + venueTime + '</p><br>');
+            $('#cardLink').attr("href", link);
         
         
         });
