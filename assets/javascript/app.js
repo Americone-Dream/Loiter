@@ -57,7 +57,7 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             title = result.events[i].title;
             console.log(title);
             splitWord(i);
-            $('#event').text(splitWord);
+            // $('#event').text(splitWord);
         }
         
         
