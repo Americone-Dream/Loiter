@@ -16,10 +16,11 @@
 h1,p{
     font-family: 'Playfair Display', serif;
 }
-
-.input-field{
+.inputrow{
+    border:1px,white,solid;
     border-radius: 10px;
 }
+
 ::placeholder{
     color: black;
     opacity: .7;
