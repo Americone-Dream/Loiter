@@ -14,12 +14,20 @@
     background-size: cover;
 }
 
+#jumbotron {
+    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+}
+
+.titleHead {
+    color: white;
+}
+
 h1,p{
     font-family: 'Playfair Display', serif;
 }
 .inputrow{
     border:1px,white,solid;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 ::placeholder{
@@ -29,5 +37,8 @@ h1,p{
 
 #searchButton{
     height: 100%;
-    margin: auto;
+    border-radius: 15px;
+    text-align: center;
+    background: #f44336;
 }
+
