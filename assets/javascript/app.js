@@ -18,7 +18,8 @@ $(document).ready(function(){
 // VARIABLES
 //========================================================================================================================
 
-
+var cardHolder = ['title1', 'title2', 'title3']
+// iterate through the different cards via the array to update the jquery selector with the card that we're working on
 
 
 
@@ -48,29 +49,32 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
         var result = response;
         console.log(result);
 
-        // for (i = 0; i < 3; i++){
+        // ===============
+        // || notice me ||
+        // ===============
+        for (i = 0; i < 3; i++){
             // start title
-            var eventName = result.events[0].title;
+            var eventName = result.events[i].title;
             $('#title').text(eventName);
             var splitName = eventName.split('-', 1);
             $('#event').text(splitName);
 
             // start url
-            var link = result.events[0].url;
+            var link = result.events[i].url;
             $('#link').attr('href', link);
 
             // start img
-            var eventImg = result.events[0].performers[0].image;
+            var eventImg = result.events[i].performers[i].image;
             $('#img').attr('src', eventImg);
 
             // venue info/stats
-            var venueInfo = result.events[0].venue.name;
-            var venueAddy = result.events[0].venue.address;
-            var venueZip = result.events[0].venue.extended_address;
+            var venueInfo = result.events[i].venue.name;
+            var venueAddy = result.events[i].venue.address;
+            var venueZip = result.events[i].venue.extended_address;
             $('#eventInfo').append($('<p>', {text:'Venue: ' + venueInfo}));
             $('#eventInfo').append($('<p>', {text:'Address: ' + venueAddy}));
             $('#eventInfo').append($('<p>', {text:venueZip}));
-        // }
+        }
         
         
         });
