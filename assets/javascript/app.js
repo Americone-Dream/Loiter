@@ -52,31 +52,31 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
         // ===============
         // || notice me ||
         // ===============
-        for (i = 0; i < 3; i++){
+        // for (i = 0; i < 3; i++){
             // start title
-            var eventName = result.events[i].title;
+            var eventName = result.events[0].title;
             $('#title').text(eventName);
             var splitName = eventName.split('-', 1);
             $('#event').text(splitName);
 
             // start url
-            var link = result.events[i].url;
+            var link = result.events[0].url;
             $('#link').attr('href', link);
 
             // start img
-            var eventImg = result.events[i].performers[i].image;
+            var eventImg = result.events[0].performers[0].image;
             $('#img').attr('src', eventImg);
 
             // venue info/stats
-            var venueInfo = result.events[i].venue.name;
-            var venueAddy = result.events[i].venue.address;
-            var venueZip = result.events[i].venue.extended_address;
+            var venueInfo = result.events[0].venue.name;
+            var venueAddy = result.events[0].venue.address;
+            var venueZip = result.events[0].venue.extended_address;
             $('#eventInfo').append($('<p>', {text:'Venue: ' + venueInfo}));
             $('#eventInfo').append($('<p>', {text:'Address: ' + venueAddy}));
             $('#eventInfo').append($('<p>', {text:venueZip}));
-        }
+        // }
         
         
-        console.log(response);
-        $()
-        });
+        // console.log(response);
+        // $()
+    });
