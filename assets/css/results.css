@@ -3,35 +3,34 @@
     font-family: 'Vollkorn', serif;
 }
 
+.containerResults {
+    width: 80%;
+}
 
 #jumbotron {
+    /* background: #66bb6a; */
+    /* background: #4db6ac; */
     background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
-    margin: none;
+    margin-bottom: 20px;
 }
 
 .titleHead {
     color: white;
     text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
 }
 
-.card-title{
-    font-family:'Montserrat', sans-serif;
-}
-
-.eventsRow{
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    width: 100%;
-}
-#eventsNearMe{
-    font-size: 20px;
-    color: white;
+#headerRow {
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .inputrow{
-    border: 1px,white,solid;
+    border:1px,white,solid;
     border-radius: 15px;
-    padding: 9px 10px;
+    margin: 0;
 }
 
 ::placeholder{
@@ -39,17 +38,14 @@
     opacity: .7;
 }
 
-#searchButton{
+/* #searchButton{
     height: 36px;
     width: 105px;
     border-radius: 15px;
     text-align: center;
     background: #f44336;
     float: right;
-}
-.buyButton{
-    border-radius: 15px;
-}
+} */
 
 #autocomplete-input {
     border: none;
@@ -57,27 +53,27 @@
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-bottom: 0;
-    font-size: 20px;
-}
-#cardContainerBackground{
-    height: 500px;
-    background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3));
-}
-.cardContainer{
-    padding-top: 20px;
+    font-size: 15px;
 }
 
- #searchIcon{
+#searchIcon{
      color: #f44336;
      padding: 0;
      margin: 0;
- }
+}
 
 #searchInput {
      margin: 0 auto;
- }
+     height: 30px;
+}
 
- #searchButtonCol {
+/* #searchButtonCol {
     margin-top: 4px;
+    padding: 0;
+} */
+
+/* DELETE THIS CLASS WHEN THE MAP IS ADDED!!!!!! */
+#resultsPlaceholderImg {
+    margin-right: 0;
     padding: 0;
 }
