@@ -24,7 +24,7 @@ h1,p{
 .inputrow{
     border:1px,white,solid;
     border-radius: 15px;
-    padding: 9px 10px;
+    /* padding: 9px 10px; */
 }
 
 ::placeholder{
@@ -32,14 +32,14 @@ h1,p{
     opacity: .7;
 }
 
-#searchButton{
+/* #searchButton{
     height: 36px;
     width: 105px;
     border-radius: 15px;
     text-align: center;
     background: #f44336;
     float: right;
-}
+} */
 
 #autocomplete-input {
     border: none;
@@ -47,7 +47,7 @@ h1,p{
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-bottom: 0;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #searchIcon{
@@ -58,9 +58,16 @@ h1,p{
 
 #searchInput {
      margin: 0 auto;
+     height: 30px;
 }
 
-#searchButtonCol {
+/* #searchButtonCol {
     margin-top: 4px;
+    padding: 0;
+} */
+
+/* DELETE THIS CLASS WHEN THE MAP IS ADDED!!!!!! */
+#resultsPlaceholderImg {
+    margin-right: 0;
     padding: 0;
 }
