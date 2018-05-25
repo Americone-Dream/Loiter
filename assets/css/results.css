@@ -8,6 +8,8 @@
 }
 
 #jumbotron {
+    /* background: #66bb6a; */
+    /* background: #4db6ac; */
     background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
     margin-bottom: 20px;
 }
