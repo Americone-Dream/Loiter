@@ -111,8 +111,10 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#eventInfo0').append('<p>Venue: <br>' + venueInfo + '</p><br>');
                         $('#eventInfo0').append('<p>Address: <br>' + venueAddy+ '<br>');
                         $('#eventInfo0').append(venueZip + '</p><br>');
-                        $('#eventInfo0').append('<p>Average Price: $' + avgPrice+ '</p>');
-                        $('#eventInfo0').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        if (avgPrice !== null || lowPrice !==null){
+                            $('#eventInfo0').append('<p>Average Price: $' + avgPrice+ '</p>');
+                            $('#eventInfo0').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        }
                         $('#eventInfo0').append('<p>Event Time: <br>' + venueTime + '</p><br>');
                         $('#cardLink0').attr("href", link);
                         //moved image due to bugs
@@ -128,8 +130,10 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#eventInfo1').append('<p>Venue: <br>' + venueInfo + '</p><br>');
                         $('#eventInfo1').append('<p>Address: <br>' + venueAddy+ '<br>');
                         $('#eventInfo1').append(venueZip + '</p><br>');
-                        $('#eventInfo1').append('<p>Average Price: $' + avgPrice+ '</p>');
-                        $('#eventInfo1').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        if (avgPrice !== null || lowPrice !==null){
+                            $('#eventInfo1').append('<p>Average Price: $' + avgPrice+ '</p>');
+                            $('#eventInfo1').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        }
                         $('#eventInfo1').append('<p>Event Time: <br>' + venueTime + '</p><br>');
                         $('#cardLink1').attr("href", link);  
                         //this one has no image
@@ -145,8 +149,10 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#eventInfo2').append('<p>Venue: <br>' + venueInfo + '</p><br>');
                         $('#eventInfo2').append('<p>Address: <br>' + venueAddy+ '<br>');
                         $('#eventInfo2').append(venueZip + '</p><br>');
-                        $('#eventInfo2').append('<p>Average Price: $' + avgPrice+ '</p>');
-                        $('#eventInfo2').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        if (avgPrice !== null || lowPrice !==null){
+                            $('#eventInfo2').append('<p>Average Price: $' + avgPrice+ '</p>');
+                            $('#eventInfo2').append('<p>Low Price: $' + lowPrice+ '</p><br>');
+                        }
                         $('#eventInfo2').append('<p>Event Time: <br>' + venueTime + '</p><br>');
                         $('#cardLink2').attr("href", link);
                         let img = result.events[2].performers[0].image
