@@ -20,6 +20,7 @@
 
 #jumbotron {
     background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+    margin-bottom: 20px;
 }
 
 .titleHead {
@@ -48,6 +49,9 @@ h1,p{
     text-align: center;
     background: #f44336;
     float: right;
+}
+.buyButton{
+    border-radius: 15px;
 }
 
 #autocomplete-input {
