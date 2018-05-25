@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+}
+
+
 #background {
     position: fixed;
     top: 50%;
@@ -13,20 +18,58 @@
     background-size: cover;
 }
 
+#jumbotron {
+    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+}
+
+.titleHead {
+    color: white;
+    text-align: center;
+}
+
 h1,p{
     font-family: 'Playfair Display', serif;
 }
-
-.input-field{
-    border-radius: 10px;
+.inputrow{
+    border:1px,white,solid;
+    border-radius: 15px;
+    padding: 9px 10px;
 }
+
 ::placeholder{
     color: black;
     opacity: .7;
 }
 
 #searchButton{
-    height: 100%;
-    margin: auto;
+    height: 36px;
+    width: 105px;
+    border-radius: 15px;
+    text-align: center;
+    background: #f44336;
+    float: right;
 }
 
+#autocomplete-input {
+    border: none;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+ #searchIcon{
+     color: #f44336;
+     padding: 0;
+     margin: 0;
+ }
+
+#searchInput {
+     margin: 0 auto;
+ }
+
+ #searchButtonCol {
+    margin-top: 4px;
+    padding: 0;
+}
