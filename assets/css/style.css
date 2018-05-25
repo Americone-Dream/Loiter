@@ -50,6 +50,9 @@ h1,p{
     background: #f44336;
     float: right;
 }
+.buyButton{
+    border-radius: 15px;
+}
 
 #autocomplete-input {
     border: none;
