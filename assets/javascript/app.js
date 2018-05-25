@@ -37,20 +37,18 @@ $(document).ready(function(){
 // FUNCTIONS
 //========================================================================================================================
 
-
-//========================================================================================================================
-// NOTES !!!!!!!!!!!!1!!!!!!!!!!!!!!!!!!
-//========================================================================================================================
-
-
-
-//Link to pull results around the user's location based off of their IP address: 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+function splitString(string, separator) {
+    var stringToArray = string.split(separator);
+    var joinedString = stringToArray.join('-');
+    return joinedString;
+}
 
 
 
 
 
-});
+
+
 
     // ==================
     // || LANDING PAGE ||
@@ -153,18 +151,19 @@ $(document).ready(function(){
     $("#searchButton").on("click", function(event) {
     event.preventDefault();
 
-    var search = $("#autocomplete-input").val().trim();
+    var rawSearch = $("#autocomplete-input").val().trim();
+    var search = splitString(rawSearch, ' ');
     console.log(search);
 
 
     //getting 403 error from calling this link
-    var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw&client_secret=f3eac0382f03fe214aa73f1b37685e3747dfd3aaa34d43fd553af4ab043b602a';
+    var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
     $.ajax({
         url: queryURL2,
         method: "GET"
-    }).then(function(response2) { 
-        console.log(response2);
-        var result2 = response2;
+    }).then(function(responseSearch) { 
+        console.log(responseSearch);
+        // var result2 = responseSearch;
         
         
         });
@@ -177,7 +176,7 @@ $(document).ready(function(){
     // ==================
     // || LOCAL SEARCH ||
     // ==================
-
+    // need to add id for event trigger for local search
     $('#').click(function() {
         event.preventDefault();
 
@@ -190,3 +189,4 @@ $(document).ready(function(){
         })
 
     });
+});
