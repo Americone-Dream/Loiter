@@ -77,4 +77,6 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
         }
         
         
+        console.log(response);
+        $()
         });
