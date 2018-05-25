@@ -16,28 +16,35 @@
         
 </head>
 <body>
-    <video autoplay loop muted poster id='background'>
+    <!-- <video autoplay loop muted poster id='background'>
 		<source src="assets/images/background.mp4" type='video/mp4'>
-	</video>
+	</video> -->
 
-
-    <div class="container landingPage">
+<div class="container-fluid" id="jumbotron">
+    <br>
+    <div class="container">
         <div class="row">
             <div class="col s12">
-                <h1>Some Really Cool Name</h1>
+                <h1 class="titleHead">Some Really Really Cool Name</h1>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">textsms</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">Search Events</label>
+                <div class="row white inputrow">
+                    <div class="input-field col s8 m9 l10" id="searchInput">
+                        <i class="material-icons prefix valign-wrapper" id="searchIcon">search</i>
+                        <input type="text" id="autocomplete-input" placeholder="Search Events" class="autocomplete">
+                    </div>
+                    <div class="col s4 m3 l2" id="searchButtonCol">
+                            <a class="waves-effect waves-light btn" id="searchButton">Search</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <br><br>
+</div>
+    <div class="container white">
         <div class="row">
             <div class="col s12 m6 l4" id="popularEventCard1">
                 <div class="card popularEvent">
@@ -116,4 +123,3 @@
     <script src="assets/javascript/app.js"></script>
 </body>
 </html>
-
