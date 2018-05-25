@@ -95,6 +95,7 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             for (let i = 0; i < 3; i++){
                 let title = result.events[i].title;
                 let split = title.split('-', 1);
+                split = title.split('(', 1);
                 //start url
                 let link = result.events[i].url;           
                 //venue info/stats
