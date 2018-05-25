@@ -36,6 +36,7 @@ $(document).ready(function(){
 
 
 
+
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
@@ -51,53 +52,6 @@ $(document).ready(function(){
 var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw&client_secret=f3eac0382f03fe214aa73f1b37685e3747dfd3aaa34d43fd553af4ab043b602a'
 // var queryURL2 = 'https://api.seatgeek.com/2/events/739515?callback=' + search;
 // 'https://api.seatgeek.com/2/events?venue.state=' + search
-    
-    // ======================================
-    // my clean code || no longer working with new IDs set in html
-    // ======================================
-    // $.ajax({
-    //     url: queryURL,
-    //     method: "GET"
-    // }).then(function(response) { 
-    // var result = response;
-    // console.log(result);
-
-    //     var eventName = result.events[0].title;
-    //     $('#title0').text(eventName);
-    //     var splitName = eventName.split('-', 1);
-    //     $('#event0').text(splitName);
-
-    //     // start url
-    //     var link = result.events[0].url;
-    //     $('#link0').attr('href', link);
-
-    //     // start img
-    //     var eventImg = result.events[0].performers[0].image;
-    //     $('#img0').attr('src', eventImg);
-
-    //     // venue info/stats
-    //     var venueInfo = result.events[0].venue.name;
-    //     var venueAddy = result.events[0].venue.address;
-    //     var venueZip = result.events[0].venue.extended_address;
-    //     var avgPrice = result.events[0].stats.average_price;
-    //     var lowPrice = result.events[0].stats.lowest_price;
-    //     var venueTime = result.events[0].venue.datetime_local;
-    //     venueTime = moment(venueTime).format('LLLL');
-        
-    //     // this is where we append all info inside card
-    //     $('#eventInfo').append($('<p>', {text:'Venue: ' + venueInfo}));
-    //     $('#eventInfo').append($('<p>', {text:'Address: ' + venueAddy}));
-    //     $('#eventInfo').append($('<p>', {text: venueZip}));
-    //     $('#eventInfo').append($('<p>', {text: 'Average Price $' + avgPrice}));
-    //     $('#eventInfo').append($('<p>', {text: 'Lowest Price: $' + lowPrice}));
-    //     $('#eventInfo').append($('<p>', {text: 'Event Time: ' + venueTime}));
-        // $('#eventInfo').append('<p>Event Time: <br>' + venueTime + '</p><br>');
-        // $('#cardLink').attr("href", link);
-    // }
-
-    // ======================================
-    // Johnny's code that needs to be parsed || was commented out on pull
-    // ======================================
     // $.ajax({
     //       url: queryURL,
     //       method: "GET"
@@ -129,9 +83,6 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
             // venueTime = moment(venueTime).format('LLLL');
             // console.log(venueTime);
 
-            // =============================================
-            // continue from here
-            // =============================================
             // //this is where we append all info inside card
             // $('#eventInfo').append('<p>Venue: <br>' + venueInfo + '</p><br>');
             // $('#eventInfo').append('<p>Address: <br>' + venueAddy+ '<br>');
@@ -143,6 +94,14 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
         // 
         
         // });
+
+  
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) { 
+                console.log(response);
+                var result = response;
             
             for (let i = 0; i < 3; i++){
                 let title = result.events[i].title;
@@ -218,4 +177,6 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                     }
                  
                 }
-            // });
+
+                });
+ 
