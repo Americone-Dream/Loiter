@@ -103,7 +103,7 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                 let venueZip = result.events[i].venue.extended_address;
                 let avgPrice = result.events[i].stats.average_price;
                 let lowPrice = result.events[i].stats.lowest_price;
-                let venueTime = result.events[i].venue.datetime_local;
+                let venueTime = result.events[i].datetime_local;
                 venueTime = moment(venueTime).format('LLLL');
                 console.log(i);
         
@@ -117,7 +117,9 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#cardLink0').attr("href", link);
                         //moved image due to bugs
                         let img = result.events[0].performers[0].image;
-                        $('#img0').attr('src', img);
+                        if (img !== null){
+                            $('#img0').attr('src', img);
+                        }
                         $('#link0').attr('href', link);
                         $('#title0').text(split);
                         $('#event0').text(split);
@@ -131,7 +133,10 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#eventInfo1').append('<p>Event Time: <br>' + venueTime + '</p><br>');
                         $('#cardLink1').attr("href", link);  
                         //this one has no image
-                        // $('#img1').attr('src', img);
+                        let img = result.events[1].performers[0].image
+                        if (img !== null){
+                            $('#img1').attr('src', img);
+                        }
                         $('#link1').attr('href', link);
                         $('#title1').text(split);
                         $('#event1').text(split);  
@@ -144,8 +149,10 @@ var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEz
                         $('#eventInfo2').append('<p>Low Price: $' + lowPrice+ '</p><br>');
                         $('#eventInfo2').append('<p>Event Time: <br>' + venueTime + '</p><br>');
                         $('#cardLink2').attr("href", link);
-                        // let img = result.events[2].performers[2].image
-                        // $('#img2').attr('src', img);
+                        let img = result.events[2].performers[0].image
+                        if (img !== null){
+                            $('#img2').attr('src', img);
+                        }
                         $('#link2').attr('href', link);
                         $('#title2').text(split);
                         $('#event2').text(split);  
