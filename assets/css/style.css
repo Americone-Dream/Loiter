@@ -1,11 +1,12 @@
 *{
     box-sizing: border-box;
+    font-family: 'Vollkorn', serif;
 }
 
 
 #jumbotron {
     background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
-    margin-bottom: 20px;
+    margin: none;
 }
 
 .titleHead {
@@ -13,11 +14,22 @@
     text-align: center;
 }
 
-h1,p{
-    font-family: 'Playfair Display', serif;
+.card-title{
+    font-family:'Montserrat', sans-serif;
 }
+
+.eventsRow{
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+#eventsNearMe{
+    font-size: 20px;
+    color: white;
+}
+
 .inputrow{
-    border:1px,white,solid;
+    border: 1px,white,solid;
     border-radius: 15px;
     padding: 9px 10px;
 }
@@ -46,6 +58,13 @@ h1,p{
     box-shadow: none;
     margin-bottom: 0;
     font-size: 20px;
+}
+#cardContainerBackground{
+    height: 500px;
+    background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3));
+}
+.cardContainer{
+    padding-top: 20px;
 }
 
  #searchIcon{
