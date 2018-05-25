@@ -10,7 +10,7 @@ $(document).ready(function(){
     //for autocomplete search bar
     $('input.autocomplete').autocomplete({
         data: {
-          "Los Angeles Galaxy": null,
+          "LA Galaxy": null,
           "Los Angeles Lakers": null,
           "Los Angeles Clippers": null,
           "Los Angeles Kings": null,
@@ -37,7 +37,7 @@ $(document).ready(function(){
 // FUNCTIONS
 //========================================================================================================================
 
-function splitString(string, separator) {
+function searchableString(string, separator) {
     var stringToArray = string.split(separator);
     var joinedString = stringToArray.join('-');
     return joinedString;
@@ -148,11 +148,12 @@ function splitString(string, separator) {
     // || SEARCH FUNCTION ||
     // =====================
 
+    // will have to look into getting the search bar functioning with searh lables to have this work
     $("#searchButton").on("click", function(event) {
     event.preventDefault();
 
     var rawSearch = $("#autocomplete-input").val().trim();
-    var search = splitString(rawSearch, ' ');
+    var search = searchableString(rawSearch, ' ');
     console.log(search);
 
 
@@ -166,12 +167,12 @@ function splitString(string, separator) {
         // var result2 = responseSearch;
         
         
-        });
+    });
 
 
 
 
-                });
+    });
     
     // ==================
     // || LOCAL SEARCH ||
