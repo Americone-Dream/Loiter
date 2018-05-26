@@ -2,6 +2,16 @@
 Hosted here on Github!
 https://americone-dream.github.io/seat_geek-project/
 
+APIs:
+-Seatgeek API
+https://seatgeek.com/account/develop
+
+Technologies in Use:
+-Materialize
+https://materializecss.com/
+
+-Moment.js
+https://momentjs.com/
 
 Contributors:
 
