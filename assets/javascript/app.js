@@ -162,22 +162,13 @@ function searchableString(string, separator) {
     var search = searchableString(rawSearch, ' ');
     console.log(search);
 
-
-    //getting 403 error from calling this link
     var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
     $.ajax({
         url: queryURL2,
         method: "GET"
     }).then(function(responseSearch) { 
         console.log(responseSearch);
-        // var result2 = responseSearch;
-        
-        
     });
-
-
-
-
     });
     
     // ==================
