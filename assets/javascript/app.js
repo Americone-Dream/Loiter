@@ -43,7 +43,7 @@ $(document).ready(function(){
 // FUNCTIONS
 //========================================================================================================================
 
-function searchableString(string, separator) {
+function searchString(string, separator) {
     var stringToArray = string.split(separator);
     var joinedString = stringToArray.join('-');
     return joinedString;
@@ -91,11 +91,11 @@ function searchableString(string, separator) {
 
             if (i == 0){
                 $('#eventInfo0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo0').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink0').attr("href", link);
@@ -110,11 +110,11 @@ function searchableString(string, separator) {
         
             } else if (i == 1){
                 $('#eventInfo1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo1').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink1').attr("href", link);  
@@ -129,11 +129,11 @@ function searchableString(string, separator) {
     
             } else {
                 $('#eventInfo2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo2').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
                     $('#eventInfo2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink2').attr("href", link);
@@ -154,37 +154,54 @@ function searchableString(string, separator) {
     // || SEARCH FUNCTION ||
     // =====================
 
-    // will have to look into getting the search bar functioning with searh lables to have this work
     $("#searchButton").on("click", function(event) {
-    event.preventDefault();
+        event.preventDefault();
+        window.location = 'results.html'
+        let rawSearch = $("#autocomplete-input").val().trim();
+        let search = searchString(rawSearch, ' ');
 
-    var rawSearch = $("#autocomplete-input").val().trim();
-    var search = searchableString(rawSearch, ' ');
-    console.log(search);
+        // for (i = 0; i <= responseSearch.length; i++) {
+        //     let title = response.Search.event[i].title;
+        //     let splitTitle = title.split('-', 1);
+        //     let splitTitle = title.split('(', 1);
+        //     //start url
+        //     let link = responseSearch.events[i].url;           
+        //     //venue info/stats
+        //     let venueInfo = responseSearch.events[i].venue.name;
+        //     let venueAddy = responseSearch.events[i].venue.address;
+        //     let venueZip = responseSearch.events[i].venue.extended_address;
+        //     let avgPrice = responseSearch.events[i].stats.average_price;
+        //     let lowPrice = responseSearch.events[i].stats.lowest_price;
+        //     let venueTime = responseSearch.events[i].datetime_local;
+        //     venueTime = moment(venueTime).format('LLLL');
+        //     console.log(i);
+        // }
 
-    var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
-    $.ajax({
-        url: queryURL2,
-        method: "GET"
-    }).then(function(responseSearch) { 
-        console.log(responseSearch);
-    });
+        var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
+        $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function(responseSearch) { 
+            console.log(responseSearch);
+        });
     });
     
     // ==================
     // || LOCAL SEARCH ||
     // ==================
-    // need to add id for event trigger for local search
+    
     $('#eventsNearMe').click(function() {
         event.preventDefault();
+        window.location = 'local.html'
 
-        var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
-        $.ajax({
-            url: queryLocal,
-            method: 'GET'
-        }).then(function(responseLocal) {
-            console.log(responseLocal);
-        })
+    //     var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+    //     $.ajax({
+    //         url: queryLocal,
+    //         method: 'GET'
+    //     }).then(function(responseLocal) {
+    //         console.log(responseLocal);
+    //     })
 
+        
     });
 });
