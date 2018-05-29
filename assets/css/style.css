@@ -9,12 +9,21 @@
     margin: none;
 }
 
+#navDivFluid {
+    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+}
+
 #navHeaderLogo {
     margin: 0;
 }
 
 #landingPageNav {
-    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .titleHead {
