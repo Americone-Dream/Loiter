@@ -25,9 +25,12 @@ function searchString(string, separator) {
 }
 //search
 $("#searchButton").on("click", function(event) {
+        event.preventDefault();
         $('#h1').slideDown();
         $('#h2').slideDown();
-        event.preventDefault();
+        $('#event0').empty();
+        $('#event1').empty();
+        $('#event2').empty();
         // window.location = 'results.html'
         let rawSearch = $("#autocomplete-input").val().trim();
         let search = searchString(rawSearch, ' ');
@@ -54,6 +57,7 @@ $("#searchButton").on("click", function(event) {
                 let lowPrice = responseSearch.events[i].stats.lowest_price;
                 let venueTime = responseSearch.events[i].datetime_local;
                 venueTime = moment(venueTime).format('LLLL');
+                console.log(venueInfo);
             //display information
             if (i == 0){
                 $('#event0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
