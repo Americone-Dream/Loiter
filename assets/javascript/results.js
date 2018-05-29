@@ -23,11 +23,12 @@ function searchString(string, separator) {
     var joinedString = stringToArray.join('-');
     return joinedString;
 }
+
+$('#h1').hide();
+$('#h2').hide();
 //search
 $("#searchButton").on("click", function(event) {
         event.preventDefault();
-        $('#h1').slideDown();
-        $('#h2').slideDown();
         $('#event0').empty();
         $('#event1').empty();
         $('#event2').empty();
@@ -44,6 +45,8 @@ $("#searchButton").on("click", function(event) {
             if (img !== null){
                     $('#img').attr('src', img);
                 }
+            $('#h1').slideDown();
+            $('#h2').slideDown();
             for (i = 0; i <= 2; i++) {
                 let title = responseSearch.events[i].title;
         //let splitTitle = title.split('-', 1);
