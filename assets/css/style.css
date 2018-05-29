@@ -9,6 +9,14 @@
     margin: none;
 }
 
+#navHeaderLogo {
+    margin: 0;
+}
+
+#landingPageNav {
+    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+}
+
 .titleHead {
     color: white;
     text-align: center;
@@ -26,6 +34,7 @@
 #eventsNearMe{
     font-size: 20px;
     color: white;
+    cursor: pointer;
 }
 
 .inputrow{
