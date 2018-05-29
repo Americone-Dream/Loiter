@@ -17,7 +17,7 @@ $(document).ready(function(){
           "Google": 'https://placehold.it/250x250'
         },
       });
-//
+//takes input and joins spaces with - for url search
 function searchString(string, separator) {
     var stringToArray = string.split(separator);
     var joinedString = stringToArray.join('-');
@@ -25,6 +25,8 @@ function searchString(string, separator) {
 }
 //search
 $("#searchButton").on("click", function(event) {
+        $('#h1').slideDown();
+        $('#h2').slideDown();
         event.preventDefault();
         // window.location = 'results.html'
         let rawSearch = $("#autocomplete-input").val().trim();
@@ -44,7 +46,7 @@ $("#searchButton").on("click", function(event) {
         //let splitTitle = title.split('-', 1);
         //let splitTitle = title.split('(', 1);
                 let link = responseSearch.events[i].url;           
-            //venue info/stats
+            //venue info/stats stored in lets.
                 let venueInfo = responseSearch.events[i].venue.name;
                 let venueAddy = responseSearch.events[i].venue.address;
                 let venueZip = responseSearch.events[i].venue.extended_address;
@@ -52,8 +54,7 @@ $("#searchButton").on("click", function(event) {
                 let lowPrice = responseSearch.events[i].stats.lowest_price;
                 let venueTime = responseSearch.events[i].datetime_local;
                 venueTime = moment(venueTime).format('LLLL');
-                console.log(i);
-            // 
+            //display information
             if (i == 0){
                 $('#event0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
                 $('#event0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
@@ -63,11 +64,14 @@ $("#searchButton").on("click", function(event) {
                     $('#event0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
                 }
                 $('#event0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                // $('#link0').attr("href", link);
-  
                 $('#link0').attr('href', link);
                 $('#title0').text(title);
-    
+                if (responseSearch.events.length == 1){
+                    $('#h1').hide();
+                    $('#h2').hide();
+                } else if (responseSearch.events.length == 2){
+                    $('#h2').hide();
+                }
         
             } else if (i == 1){
                 $('#event1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
@@ -78,8 +82,6 @@ $("#searchButton").on("click", function(event) {
                     $('#event1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
                 }
                 $('#event1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                // $('#link1').attr("href", link);  
-  
                 $('#title1').text(title);  
     
             } else {
@@ -91,13 +93,9 @@ $("#searchButton").on("click", function(event) {
                     $('#event2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
                 }
                 $('#event2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-    
-
-                // $('#link2').attr('href', link);
                 $('#title2').text(title);
+                }
             }
-            }
-
 });
 });
 });
