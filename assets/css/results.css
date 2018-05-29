@@ -10,7 +10,9 @@
 #jumbotron {
     /* background: #66bb6a; */
     /* background: #4db6ac; */
-    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
+    /* background: #26c6da; */
+    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
     margin-bottom: 20px;
 }
 

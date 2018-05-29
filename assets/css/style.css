@@ -5,12 +5,14 @@
 
 
 #jumbotron {
-    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
+    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
     margin: none;
 }
 
 #navDivFluid {
-    background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8));
+    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
+    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
 }
 
 #navHeaderLogo {
@@ -62,7 +64,8 @@
     width: 105px;
     border-radius: 15px;
     text-align: center;
-    background: #f44336;
+    /* background: #f44336; */
+    background: #4db6ac;
     float: right;
 }
 .buyButton{
@@ -79,14 +82,16 @@
 }
 #cardContainerBackground{
     height: 500px;
-    background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3));
+    background: #f5f5f5;
+    /* background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3)); */
 }
 .cardContainer{
     padding-top: 20px;
 }
 
  #searchIcon{
-     color: #f44336;
+     /* color: #f44336; */
+     color: #4db6ac;
      padding: 0;
      margin: 0;
  }
@@ -108,4 +113,8 @@
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
+}
+
+.buyButton {
+    background: #4db6ac;
 }
