@@ -1,6 +1,6 @@
 //DOCUMENT READY
 $(document).ready(function(){
-var result = '';
+
 //========================================================================================================================
 // NOTES
 //========================================================================================================================
@@ -34,7 +34,8 @@ var result = '';
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
-    
+var result = '';
+var locations = [''];
     // Map setup
     var platform = new H.service.Platform({
         'app_id': '4pLGlEJpsN5pPookNa3k',
@@ -74,6 +75,12 @@ function displayCard(){
     for (let i = 0; i < 3; i++){
         let title = result.events[i].title;
         let split = title.split('-', 1);
+        split = title.split('(', 1);
+        splitunedit = split;
+        if(split[0].length > 27){
+            split=split[0].slice(0,27).concat("...");
+            
+        }
         //start url
         let link = result.events[i].url;           
         //venue info/stats
@@ -84,6 +91,9 @@ function displayCard(){
         let lowPrice = result.events[i].stats.lowest_price;
         let venueLL = result.events[i].venue.location;
         console.log(venueLL);
+        locations.push(venueLL);
+        console.log(locations);
+
         let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
 
@@ -107,7 +117,7 @@ function displayCard(){
                     $('#img0').attr('src', img);
                 }
                 $('#link0').attr('href', link);
-                $('#title0').text(split);
+                $('#title0').text(splitunedit);
                 $('#event0').text(split);
         
             } else if (i == 1){
@@ -126,7 +136,7 @@ function displayCard(){
                     $('#img1').attr('src', img);
                 }
                 $('#link1').attr('href', link);
-                $('#title1').text(split);
+                $('#title1').text(splitunedit);
                 $('#event1').text(split);  
     
             } else {
@@ -144,7 +154,7 @@ function displayCard(){
                     $('#img2').attr('src', img);
                 }
                 $('#link2').attr('href', link);
-                $('#title2').text(split);
+                $('#title2').text(splitunedit);
                 $('#event2').text(split);  
             }
             
