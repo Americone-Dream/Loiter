@@ -61,7 +61,7 @@ $("#searchButton").on("click", function(event) {
                 let venueZip = responseSearch.events[i].venue.extended_address;
                 let avgPrice = responseSearch.events[i].stats.average_price;
                 let lowPrice = responseSearch.events[i].stats.lowest_price;
-                let venueTime = responseSearch.events[i].datetime_local;
+                let venueTime = responseSearch.events[i].datetime_utc;
                 venueTime = moment(venueTime).format('LLLL');
                 console.log(venueInfo);
             //display information

@@ -78,7 +78,7 @@ function searchString(string, separator) {
         let venueZip = result.events[i].venue.extended_address;
         let avgPrice = result.events[i].stats.average_price;
         let lowPrice = result.events[i].stats.lowest_price;
-        let venueTime = result.events[i].datetime_local;
+        let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
         console.log(i);
 
