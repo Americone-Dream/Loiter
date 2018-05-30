@@ -90,6 +90,12 @@ function searchString(string, separator) {
     for (let i = 0; i < 3; i++){
         let title = result.events[i].title;
         let split = title.split('-', 1);
+        split = title.split('(', 1);
+        splitunedit = split;
+        if(split[0].length > 27){
+            split=split[0].slice(0,27).concat("...");
+            
+        }
         //start url
         let link = result.events[i].url;           
         //venue info/stats
@@ -121,7 +127,7 @@ function searchString(string, separator) {
                     $('#img0').attr('src', img);
                 }
                 $('#link0').attr('href', link);
-                $('#title0').text(split);
+                $('#title0').text(splitunedit);
                 $('#event0').text(split);
         
             } else if (i == 1){
@@ -140,7 +146,7 @@ function searchString(string, separator) {
                     $('#img1').attr('src', img);
                 }
                 $('#link1').attr('href', link);
-                $('#title1').text(split);
+                $('#title1').text(splitunedit);
                 $('#event1').text(split);  
     
             } else {
@@ -158,7 +164,7 @@ function searchString(string, separator) {
                     $('#img2').attr('src', img);
                 }
                 $('#link2').attr('href', link);
-                $('#title2').text(split);
+                $('#title2').text(splitunedit);
                 $('#event2').text(split);  
             }
             
