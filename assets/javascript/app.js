@@ -79,7 +79,6 @@ function displayCard(){
         splitunedit = split;
         if(split[0].length > 27){
             split=split[0].slice(0,27).concat("...");
-            
         }
         //start url
         let link = result.events[i].url;           
@@ -101,62 +100,62 @@ function displayCard(){
             // || CARD ELEMENT ||
             // ==================
 
-            if (i == 0){
-                $('#eventInfo0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
-                $('#eventInfo0').append(venueZip + '</p><br>');
+            // if (i == 0){
+                $('#eventInfo' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#eventInfo' + i).append('<p><b>Address: </b><br>' + venueAddy + '<br>');
+                $('#eventInfo' + i).append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
-                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
+                    $('#eventInfo' + i).append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                    $('#eventInfo' + i).append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
-                $('#eventInfo0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                $('#cardLink0').attr("href", link);
+                $('#eventInfo' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#cardLink' + i).attr("href", link);
                 //moved image due to bugs
-                let img = result.events[0].performers[0].image;
+                let img = result.events[i].performers[0].image;
                 if (img !== null){
-                    $('#img0').attr('src', img);
+                    $('#img' + i).attr('src', img);
                 }
-                $('#link0').attr('href', link);
-                $('#title0').text(splitunedit);
-                $('#event0').text(split);
+                $('#link' + i).attr('href', link);
+                $('#title' + i).text(splitunedit);
+                $('#event' + i).text(split);
         
-            } else if (i == 1){
-                $('#eventInfo1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
-                $('#eventInfo1').append(venueZip + '</p><br>');
-                if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
-                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
-                }
-                $('#eventInfo1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                $('#cardLink1').attr("href", link);  
-                //this one has no image
-                let img = result.events[1].performers[0].image
-                if (img !== null){
-                    $('#img1').attr('src', img);
-                }
-                $('#link1').attr('href', link);
-                $('#title1').text(splitunedit);
-                $('#event1').text(split);  
+            // } else if (i == 1){
+            //     $('#eventInfo1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+            //     $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
+            //     $('#eventInfo1').append(venueZip + '</p><br>');
+            //     if (avgPrice !== null || lowPrice !==null){
+            //         $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+            //         $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
+            //     }
+            //     $('#eventInfo1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+            //     $('#cardLink1').attr("href", link);  
+            //     //this one has no image
+            //     let img = result.events[1].performers[0].image
+            //     if (img !== null){
+            //         $('#img1').attr('src', img);
+            //     }
+            //     $('#link1').attr('href', link);
+            //     $('#title1').text(splitunedit);
+            //     $('#event1').text(split);  
     
-            } else {
-                $('#eventInfo2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
-                $('#eventInfo2').append(venueZip + '</p><br>');
-                if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
-                }
-                $('#eventInfo2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                $('#cardLink2').attr("href", link);
-                let img = result.events[2].performers[0].image
-                if (img !== null){
-                    $('#img2').attr('src', img);
-                }
-                $('#link2').attr('href', link);
-                $('#title2').text(splitunedit);
-                $('#event2').text(split);  
-            }
+            // } else {
+            //     $('#eventInfo2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+            //     $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
+            //     $('#eventInfo2').append(venueZip + '</p><br>');
+            //     if (avgPrice !== null || lowPrice !==null){
+            //         $('#eventInfo2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+            //         $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
+            //     }
+            //     $('#eventInfo2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+            //     $('#cardLink2').attr("href", link);
+            //     let img = result.events[2].performers[0].image
+            //     if (img !== null){
+            //         $('#img2').attr('src', img);
+            //     }
+            //     $('#link2').attr('href', link);
+            //     $('#title2').text(splitunedit);
+            //     $('#event2').text(split);  
+            // }
             
         }
 }
