@@ -34,8 +34,28 @@ $(document).ready(function(){
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
-
-
+    
+    // Map setup
+    var platform = new H.service.Platform({
+        'app_id': '4pLGlEJpsN5pPookNa3k',
+        'app_code': '4ocYltkVtb1XMprLlf4zsg'
+    });
+    var defaultLayers = platform.createDefaultLayers();
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.normal.map,
+        {
+          zoom: 10,
+          center: { lng: -118, lat: 34}
+        });
+    var mapEvents = new H.mapevents.MapEvents(map);
+    map.addEventListener('tap', function(evt) {
+        // only here so I can see actions being read by the map
+        console.log(evt.type, evt.currentPointer.type); 
+    });
+    var behavior = new H.mapevents.Behavior(mapEvents);
+    var ui = H.ui.UI.createDefault(map, defaultLayers);
+      
 
 
 
@@ -80,7 +100,6 @@ function searchString(string, separator) {
         let lowPrice = result.events[i].stats.lowest_price;
         let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
-        console.log(i);
 
             // ==================
             // || CARD ELEMENT ||
@@ -88,11 +107,11 @@ function searchString(string, separator) {
 
             if (i == 0){
                 $('#eventInfo0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo0').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink0').attr("href", link);
@@ -107,11 +126,11 @@ function searchString(string, separator) {
         
             } else if (i == 1){
                 $('#eventInfo1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo1').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink1').attr("href", link);  
@@ -126,11 +145,11 @@ function searchString(string, separator) {
     
             } else {
                 $('#eventInfo2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy + '<br>');
                 $('#eventInfo2').append(venueZip + '</p><br>');
                 if (avgPrice !== null || lowPrice !==null){
                     $('#eventInfo2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
                 }
                 $('#eventInfo2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
                 $('#cardLink2').attr("href", link);
@@ -235,14 +254,30 @@ function searchString(string, separator) {
         event.preventDefault();
         window.location = 'local.html'
 
-    //     var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
-    //     $.ajax({
-    //         url: queryLocal,
-    //         method: 'GET'
-    //     }).then(function(responseLocal) {
-    //         console.log(responseLocal);
-    //     })
+        // var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+        // $.ajax({
+        //     url: queryLocal,
+        //     method: 'GET'
+        // }).then(function(responseLocal) {
+        //     console.log(responseLocal);
+        // })
 
         
     });
+
+// ==============
+// || HERE API ||
+// ==============
+
+    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
+    let lat = '';
+    let lgn = '';
+
+    $.ajax({
+        url: queryHere,
+        method: 'GET'
+    }).then(function(responseHere) {
+        console.log(responseHere);
+    })
+
 });
