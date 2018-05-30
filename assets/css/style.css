@@ -43,12 +43,18 @@
     font-family:'Montserrat', sans-serif;
     
 }
+
+.card-image {
+    border-radius: 15px 15px 0 0;
+}
+
 .card{
     max-height: 90%;
     min-height: 70%;
     min-width: 300px;
     max-width: 314px;
     margin: 8px auto;
+    border-radius: 15px;
 }
 
 .eventsRow{
