@@ -40,19 +40,21 @@ $(document).ready(function(){
         'app_id': '4pLGlEJpsN5pPookNa3k',
         'app_code': '4ocYltkVtb1XMprLlf4zsg'
     });
-    var maptypes = platform.createDefaultLayers();
+    var defaultLayers = platform.createDefaultLayers();
     var map = new H.Map(
         document.getElementById('mapContainer'),
-        maptypes.normal.map,
+        defaultLayers.normal.map,
         {
           zoom: 10,
           center: { lng: -118, lat: 34}
         });
     var mapEvents = new H.mapevents.MapEvents(map);
     map.addEventListener('tap', function(evt) {
+        // only here so I can see actions being read by the map
         console.log(evt.type, evt.currentPointer.type); 
     });
     var behavior = new H.mapevents.Behavior(mapEvents);
+    var ui = H.ui.UI.createDefault(map, defaultLayers);
       
 
 
