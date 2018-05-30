@@ -2,6 +2,12 @@
 $(document).ready(function(){
 
 //========================================================================================================================
+// NOTES
+//========================================================================================================================
+
+// Parameters for the search bar require event/performer IDs or name labeled as 'slug'
+
+//========================================================================================================================
 // jQuery for Materialize Design Elements
 //========================================================================================================================
     // Initializes all of the Materialize Components with a single function call 
@@ -10,7 +16,7 @@ $(document).ready(function(){
     //for autocomplete search bar
     $('input.autocomplete').autocomplete({
         data: {
-          "Los Angeles Galaxy": null,
+          "LA Galaxy": null,
           "Los Angeles Lakers": null,
           "Los Angeles Clippers": null,
           "Los Angeles Kings": null,
@@ -33,13 +39,14 @@ $(document).ready(function(){
 
 
 
-
-
-
-
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
+function searchString(string, separator) {
+    var stringToArray = string.split(separator);
+    var joinedString = stringToArray.join('-');
+    return joinedString;
+}
 
 
 
@@ -47,136 +54,196 @@ $(document).ready(function(){
 
 
 
-});
+    // ==================
+    // || LANDING PAGE ||
+    // ==================
 
-var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw&client_secret=f3eac0382f03fe214aa73f1b37685e3747dfd3aaa34d43fd553af4ab043b602a'
-// var queryURL2 = 'https://api.seatgeek.com/2/events/739515?callback=' + search;
-// 'https://api.seatgeek.com/2/events?venue.state=' + search
-    // $.ajax({
-    //       url: queryURL,
-    //       method: "GET"
-    //     }).then(function(response) { 
-    //     console.log(response);
-    //     var result = response;
-        // for (let i = 0; i < 3; i++){
-            //start title
-            // var title = result.events[0].title;
-            // console.log(title);
-            // var split = title.split('-', 1);
-            // $('#title').text(split);
-            // $('#event').text(split);
-            // //start url
-            // var link = result.events[0].url;
-            // console.log(link);
-            // $('#link').attr('href', link);
-            // //start img
-            // var img = result.events[0].performers[0].image;
-            // console.log(img);
-            // $('#img').attr('src', img);
-            // //venue info/stats
-            // var venueInfo = result.events[0].venue.name;
-            // var venueAddy = result.events[0].venue.address;
-            // var venueZip = result.events[0].venue.extended_address;
-            // var avgPrice = result.events[0].stats.average_price;
-            // var lowPrice = result.events[0].stats.lowest_price;
-            // var venueTime = result.events[0].venue.datetime_local;
-            // venueTime = moment(venueTime).format('LLLL');
-            // console.log(venueTime);
+    var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
 
-            // //this is where we append all info inside card
-            // $('#eventInfo').append('<p>Venue: <br>' + venueInfo + '</p><br>');
-            // $('#eventInfo').append('<p>Address: <br>' + venueAddy+ '<br>');
-            // $('#eventInfo').append(venueZip + '</p><br>');
-            // $('#eventInfo').append('<p>Average Price: $' + avgPrice+ '</p>');
-            // $('#eventInfo').append('<p>Low Price: $' + lowPrice+ '</p><br>');
-            // $('#eventInfo').append('<p>Event Time: <br>' + venueTime + '</p><br>');
-            // $('#cardLink').attr("href", link);
-        // 
-        
-        // });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(responsePopular) { 
+        console.log(responsePopular);
+        var result = responsePopular;
+    
+    for (let i = 0; i < 3; i++){
+        let title = result.events[i].title;
+        let split = title.split('-', 1);
+        split = title.split('(', 1);
+        //start url
+        let link = result.events[i].url;           
+        //venue info/stats
+        let venueInfo = result.events[i].venue.name;
+        let venueAddy = result.events[i].venue.address;
+        let venueZip = result.events[i].venue.extended_address;
+        let avgPrice = result.events[i].stats.average_price;
+        let lowPrice = result.events[i].stats.lowest_price;
+        let venueTime = result.events[i].datetime_local;
+        venueTime = moment(venueTime).format('LLLL');
+        console.log(i);
 
-  
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function(response) { 
-                console.log(response);
-                var result = response;
-            
-            for (let i = 0; i < 3; i++){
-                let title = result.events[i].title;
-                let split = title.split('-', 1);
-                split = title.split('(', 1);
-                //start url
-                let link = result.events[i].url;           
-                //venue info/stats
-                let venueInfo = result.events[i].venue.name;
-                let venueAddy = result.events[i].venue.address;
-                let venueZip = result.events[i].venue.extended_address;
-                let avgPrice = result.events[i].stats.average_price;
-                let lowPrice = result.events[i].stats.lowest_price;
-                let venueTime = result.events[i].datetime_local;
-                venueTime = moment(venueTime).format('LLLL');
-                console.log(i);
-        
-                    if (i == 0){
-                        $('#eventInfo0').append('<p>Venue: <br>' + venueInfo + '</p><br>');
-                        $('#eventInfo0').append('<p>Address: <br>' + venueAddy+ '<br>');
-                        $('#eventInfo0').append(venueZip + '</p><br>');
-                        if (avgPrice !== null || lowPrice !==null){
-                            $('#eventInfo0').append('<p>Average Price: $' + avgPrice+ '</p>');
-                            $('#eventInfo0').append('<p>Low Price: $' + lowPrice+ '</p><br>');
-                        }
-                        $('#eventInfo0').append('<p>Event Time: <br>' + venueTime + '</p><br>');
-                        $('#cardLink0').attr("href", link);
-                        //moved image due to bugs
-                        let img = result.events[0].performers[0].image;
-                        if (img !== null){
-                            $('#img0').attr('src', img);
-                        }
-                        $('#link0').attr('href', link);
-                        $('#title0').text(split);
-                        $('#event0').text(split);
-                
-                    } else if (i == 1){
-                        $('#eventInfo1').append('<p>Venue: <br>' + venueInfo + '</p><br>');
-                        $('#eventInfo1').append('<p>Address: <br>' + venueAddy+ '<br>');
-                        $('#eventInfo1').append(venueZip + '</p><br>');
-                        if (avgPrice !== null || lowPrice !==null){
-                            $('#eventInfo1').append('<p>Average Price: $' + avgPrice+ '</p>');
-                            $('#eventInfo1').append('<p>Low Price: $' + lowPrice+ '</p><br>');
-                        }
-                        $('#eventInfo1').append('<p>Event Time: <br>' + venueTime + '</p><br>');
-                        $('#cardLink1').attr("href", link);  
-                        //this one has no image
-                        let img = result.events[1].performers[0].image
-                        if (img !== null){
-                            $('#img1').attr('src', img);
-                        }
-                        $('#link1').attr('href', link);
-                        $('#title1').text(split);
-                        $('#event1').text(split);  
-         
-                    } else {
-                        $('#eventInfo2').append('<p>Venue: <br>' + venueInfo + '</p><br>');
-                        $('#eventInfo2').append('<p>Address: <br>' + venueAddy+ '<br>');
-                        $('#eventInfo2').append(venueZip + '</p><br>');
-                        if (avgPrice !== null || lowPrice !==null){
-                            $('#eventInfo2').append('<p>Average Price: $' + avgPrice+ '</p>');
-                            $('#eventInfo2').append('<p>Low Price: $' + lowPrice+ '</p><br>');
-                        }
-                        $('#eventInfo2').append('<p>Event Time: <br>' + venueTime + '</p><br>');
-                        $('#cardLink2').attr("href", link);
-                        let img = result.events[2].performers[0].image
-                        if (img !== null){
-                            $('#img2').attr('src', img);
-                        }
-                        $('#link2').attr('href', link);
-                        $('#title2').text(split);
-                        $('#event2').text(split);  
-                    }
-                 
+            // ==================
+            // || CARD ELEMENT ||
+            // ==================
+
+            if (i == 0){
+                $('#eventInfo0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#eventInfo0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo0').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#eventInfo0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#eventInfo0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
                 }
+                $('#eventInfo0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#cardLink0').attr("href", link);
+                //moved image due to bugs
+                let img = result.events[0].performers[0].image;
+                if (img !== null){
+                    $('#img0').attr('src', img);
+                }
+                $('#link0').attr('href', link);
+                $('#title0').text(split);
+                $('#event0').text(split);
+        
+            } else if (i == 1){
+                $('#eventInfo1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#eventInfo1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo1').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#eventInfo1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#eventInfo1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#eventInfo1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#cardLink1').attr("href", link);  
+                //this one has no image
+                let img = result.events[1].performers[0].image
+                if (img !== null){
+                    $('#img1').attr('src', img);
+                }
+                $('#link1').attr('href', link);
+                $('#title1').text(split);
+                $('#event1').text(split);  
+    
+            } else {
+                $('#eventInfo2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#eventInfo2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#eventInfo2').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#eventInfo2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#eventInfo2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#eventInfo2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#cardLink2').attr("href", link);
+                let img = result.events[2].performers[0].image
+                if (img !== null){
+                    $('#img2').attr('src', img);
+                }
+                $('#link2').attr('href', link);
+                $('#title2').text(split);
+                $('#event2').text(split);  
+            }
+            
+        }
 
-                });
- 
+    });
+
+// =====================
+// || SEARCH FUNCTION ||
+// =====================
+
+    // $("#searchButton").on("click", function(event) {
+    //     event.preventDefault();
+    //     // window.location = 'results.html'
+    //     let rawSearch = $("#autocomplete-input").val().trim();
+    //     let search = searchString(rawSearch, ' ');
+
+    //     var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
+    //     $.ajax({
+    //         url: queryURL2,
+    //         method: "GET"
+    //     }).then(function(responseSearch) { 
+    //         console.log(responseSearch);
+    //         // let img = responseSearch.events[0].performers[0].image;
+    //         // if (img !== null){
+    //         //         $('#img').attr('src', img);
+    //         //     }
+    //         for (i = 0; i <= 2; i++) {
+    //             let title = responseSearch.events[i].title;
+    //     //let splitTitle = title.split('-', 1);
+    //     //let splitTitle = title.split('(', 1);
+    //             let link = responseSearch.events[i].url;           
+    //         //venue info/stats
+    //             let venueInfo = responseSearch.events[i].venue.name;
+    //             let venueAddy = responseSearch.events[i].venue.address;
+    //             let venueZip = responseSearch.events[i].venue.extended_address;
+    //             let avgPrice = responseSearch.events[i].stats.average_price;
+    //             let lowPrice = responseSearch.events[i].stats.lowest_price;
+    //             let venueTime = responseSearch.events[i].datetime_local;
+    //             venueTime = moment(venueTime).format('LLLL');
+    //         // 
+    //         if (i == 0){
+    //             $('#event0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+    //             $('#event0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+    //             $('#event0').append(venueZip + '</p><br>');
+    //             if (avgPrice !== null || lowPrice !==null){
+    //                 $('#event0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+    //                 $('#event0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+    //             }
+    //             $('#event0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+    //             // $('#link0').attr("href", link);
+  
+    //             $('#link0').attr('href', link);
+    //             $('#title0').text(title);
+    
+        
+    //         } else if (i == 1){
+    //             $('#event1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+    //             $('#event1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+    //             $('#event1').append(venueZip + '</p><br>');
+    //             if (avgPrice !== null || lowPrice !==null){
+    //                 $('#event1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+    //                 $('#event1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+    //             }
+    //             $('#event1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+    //             // $('#link1').attr("href", link);  
+  
+    //             $('#title1').text(title);  
+    
+    //         } else {
+    //             $('#event2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+    //             $('#event2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+    //             $('#event2').append(venueZip + '</p><br>');
+    //             if (avgPrice !== null || lowPrice !==null){
+    //                 $('#event2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+    //                 $('#event2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+    //             }
+    //             $('#event2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+    
+
+    //             // $('#link2').attr('href', link);
+    //             $('#title2').text(title);
+    //         }
+    //         }
+    //     });
+    // });
+    
+// ==================
+// || LOCAL SEARCH ||
+// ==================
+    
+    $('#eventsNearMe').click(function() {
+        event.preventDefault();
+        window.location = 'local.html'
+
+    //     var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+    //     $.ajax({
+    //         url: queryLocal,
+    //         method: 'GET'
+    //     }).then(function(responseLocal) {
+    //         console.log(responseLocal);
+    //     })
+
+        
+    });
+});
