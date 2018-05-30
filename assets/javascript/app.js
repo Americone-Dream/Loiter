@@ -34,8 +34,26 @@ $(document).ready(function(){
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
-
-
+    
+    // Map setup
+    var platform = new H.service.Platform({
+        'app_id': '4pLGlEJpsN5pPookNa3k',
+        'app_code': '4ocYltkVtb1XMprLlf4zsg'
+    });
+    var maptypes = platform.createDefaultLayers();
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        maptypes.normal.map,
+        {
+          zoom: 10,
+          center: { lng: -118, lat: 34}
+        });
+    var mapEvents = new H.mapevents.MapEvents(map);
+    map.addEventListener('tap', function(evt) {
+        console.log(evt.type, evt.currentPointer.type); 
+    });
+    var behavior = new H.mapevents.Behavior(mapEvents);
+      
 
 
 
@@ -81,7 +99,6 @@ function searchString(string, separator) {
         let lowPrice = result.events[i].stats.lowest_price;
         let venueTime = result.events[i].datetime_local;
         venueTime = moment(venueTime).format('LLLL');
-        console.log(i);
 
             // ==================
             // || CARD ELEMENT ||
@@ -236,14 +253,30 @@ function searchString(string, separator) {
         event.preventDefault();
         window.location = 'local.html'
 
-    //     var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
-    //     $.ajax({
-    //         url: queryLocal,
-    //         method: 'GET'
-    //     }).then(function(responseLocal) {
-    //         console.log(responseLocal);
-    //     })
+        // var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+        // $.ajax({
+        //     url: queryLocal,
+        //     method: 'GET'
+        // }).then(function(responseLocal) {
+        //     console.log(responseLocal);
+        // })
 
         
     });
+
+// ==============
+// || HERE API ||
+// ==============
+
+    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
+    let lat = '';
+    let lgn = '';
+
+    $.ajax({
+        url: queryHere,
+        method: 'GET'
+    }).then(function(responseHere) {
+        console.log(responseHere);
+    })
+
 });

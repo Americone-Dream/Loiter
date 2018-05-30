@@ -17,7 +17,10 @@
         <!---->
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        
+        <!-- Important map setup -->
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
     <!-- <video autoplay loop muted poster id='background'>
@@ -102,12 +105,14 @@
                         <span id='title2' class="card-title grey-text text-darken-4 center-align">Card Title<i class="material-icons right">close</i></span>
                             <hr>
                             <div id='eventInfo2' value='2'></div>
-                            <div class="center-align"><a id='cardLink2' href="#" class="btn waves-effect waves-light red buyButton" target='_blank'>Buy Now</a></
+                            <div class="center-align"><a id='cardLink2' href="#" class="btn waves-effect waves-light red buyButton" target='_blank'>Buy Now</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- temp map holder -->
+    <div style="width: 640px; height: 480px" id='mapContainer'></div>
 </div>
 
 
