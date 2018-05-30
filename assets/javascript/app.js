@@ -184,81 +184,236 @@ function displayCard(){
 // || SEARCH FUNCTION ||
 // =====================
 
-    // $("#searchButton").on("click", function(event) {
-    //     event.preventDefault();
-    //     // window.location = 'results.html'
-    //     let rawSearch = $("#autocomplete-input").val().trim();
-    //     let search = searchString(rawSearch, ' ');
+$("#landingSearchButton").on("click", function(event) {
+        event.preventDefault();
+        $('#totalLandingPageDiv').hide();
+        $('#totalResultsPageDiv').slideDown();
+        // window.location = 'results.html'
+        let rawSearch = $("#autocomplete-input").val().trim();
+        let search = searchString(rawSearch, ' ');
+        var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
+        $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function(responseSearch) { 
+            console.log(responseSearch.events[0]);
+            if (responseSearch.events[0] == undefined){
+                return;
+            }
+            $('#event0').empty();
+            $('#event1').empty();
+            $('#event2').empty();
+            $('#event3').empty();
+            $('#event4').empty();
+            $('#event5').empty();
+            $('#event6').empty();
+            $('#event7').empty();
+            $('#event8').empty();
+            $('#event9').empty();
+            let img = responseSearch.events[0].performers[0].image;
+            if (img !== null){
+                    $('#img').attr('src', img);
+                }
+            $('#h1').slideDown();
+            $('#h2').slideDown();
+            $('#h3').slideDown();
+            $('#h4').slideDown();
+            $('#h5').slideDown();
+            $('#h6').slideDown();
+            $('#h7').slideDown();
+            $('#h8').slideDown();
+            $('#h9').slideDown();
+            // will have to take another look at this for loop if we want to implement pagination
+            for (i = 0; i <= 9; i++) {
+                let title = responseSearch.events[i].title;
+        //let splitTitle = title.split('-', 1);
+        //let splitTitle = title.split('(', 1);
+                let link = responseSearch.events[i].url;           
+            //venue info/stats stored in lets.
+                let venueInfo = responseSearch.events[i].venue.name;
+                let venueAddy = responseSearch.events[i].venue.address;
+                let venueZip = responseSearch.events[i].venue.extended_address;
+                let avgPrice = responseSearch.events[i].stats.average_price;
+                let lowPrice = responseSearch.events[i].stats.lowest_price;
 
-    //     var queryURL2 = 'https://api.seatgeek.com/2/events?performers.slug=' + search + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw';
-    //     $.ajax({
-    //         url: queryURL2,
-    //         method: "GET"
-    //     }).then(function(responseSearch) { 
-    //         console.log(responseSearch);
-    //         // let img = responseSearch.events[0].performers[0].image;
-    //         // if (img !== null){
-    //         //         $('#img').attr('src', img);
-    //         //     }
-    //         for (i = 0; i <= 2; i++) {
-    //             let title = responseSearch.events[i].title;
-    //     //let splitTitle = title.split('-', 1);
-    //     //let splitTitle = title.split('(', 1);
-    //             let link = responseSearch.events[i].url;           
-    //         //venue info/stats
-    //             let venueInfo = responseSearch.events[i].venue.name;
-    //             let venueAddy = responseSearch.events[i].venue.address;
-    //             let venueZip = responseSearch.events[i].venue.extended_address;
-    //             let avgPrice = responseSearch.events[i].stats.average_price;
-    //             let lowPrice = responseSearch.events[i].stats.lowest_price;
-    //             let venueTime = responseSearch.events[i].datetime_local;
-    //             venueTime = moment(venueTime).format('LLLL');
-    //         // 
-    //         if (i == 0){
-    //             $('#event0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-    //             $('#event0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-    //             $('#event0').append(venueZip + '</p><br>');
-    //             if (avgPrice !== null || lowPrice !==null){
-    //                 $('#event0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-    //                 $('#event0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-    //             }
-    //             $('#event0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-    //             // $('#link0').attr("href", link);
-  
-    //             $('#link0').attr('href', link);
-    //             $('#title0').text(title);
-    
+                let venueLL = responseSearch.events[i].venue.location;
+                console.log(venueLL);
+                locations.push(venueLL);
+                console.log(locations);
+
+                let venueTime = responseSearch.events[i].datetime_utc;
+                venueTime = moment(venueTime).format('LLLL');
+                console.log(venueInfo);
+            //display information
+            if (i == 0){
+                $('#sevent0').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent0').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent0').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent0').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent0').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent0').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#slink0').attr('href', link);
+                $('#stitle0').text(title);
+                if (responseSearch.events.length == 1){
+                    $('#h1').hide();
+                    $('#h2').hide();
+                    $('#h3').hide();
+                    $('#h4').hide();
+                    $('#h5').hide();
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 2){
+                    $('#h2').hide();
+                    $('#h3').hide();
+                    $('#h4').hide();
+                    $('#h5').hide();
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 3){
+                    $('#h3').hide();
+                    $('#h4').hide();
+                    $('#h5').hide();
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 4){
+                    $('#h4').hide();
+                    $('#h5').hide();
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 5){
+                    $('#h5').hide();
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 6){
+                    $('#h6').hide();
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 7){
+                    $('#h7').hide();
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 8){
+                    $('#h8').hide();
+                    $('#h9').hide();
+                } else if (responseSearch.events.length == 9){
+                    $('#h9').hide();
+                }
         
-    //         } else if (i == 1){
-    //             $('#event1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-    //             $('#event1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-    //             $('#event1').append(venueZip + '</p><br>');
-    //             if (avgPrice !== null || lowPrice !==null){
-    //                 $('#event1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-    //                 $('#event1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-    //             }
-    //             $('#event1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-    //             // $('#link1').attr("href", link);  
-  
-    //             $('#title1').text(title);  
+            } else if (i == 1){
+                $('#sevent1').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent1').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent1').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent1').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent1').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent1').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle1').text(title);  
     
-    //         } else {
-    //             $('#event2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-    //             $('#event2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-    //             $('#event2').append(venueZip + '</p><br>');
-    //             if (avgPrice !== null || lowPrice !==null){
-    //                 $('#event2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-    //                 $('#event2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-    //             }
-    //             $('#event2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-    
+            } else if (i == 2){
+                $('#sevent2').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent2').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent2').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent2').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent2').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent2').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle2').text(title);
 
-    //             // $('#link2').attr('href', link);
-    //             $('#title2').text(title);
-    //         }
-    //         }
-    //     });
-    // });
+            } else if (i == 3){
+                $('#sevent3').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent3').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent3').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent3').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent3').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent3').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle3').text(title);
+
+            } else if (i == 4){
+                $('#sevent4').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent4').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent4').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent4').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent4').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent4').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle4').text(title);
+
+            } else if (i == 5){
+                $('#sevent5').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent5').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent5').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent5').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent5').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent5').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle5').text(title);
+
+            } else if (i == 6){
+                $('#sevent6').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent6').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent6').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent6').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent6').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent6').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle6').text(title);
+
+            } else if (i == 7){
+                $('#sevent7').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent7').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent7').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent7').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent7').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent7').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle7').text(title);
+
+            } else if (i == 8){
+                $('#sevent8').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent8').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent8').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent8').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent8').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent8').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle8').text(title);
+                
+            } else if (i == 9){
+                $('#sevent9').append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+                $('#sevent9').append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+                $('#sevent9').append(venueZip + '</p><br>');
+                if (avgPrice !== null || lowPrice !==null){
+                    $('#sevent9').append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                    $('#sevent9').append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+                }
+                $('#sevent9').append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+                $('#stitle9').text(title);
+                }
+            }
+        });
+    });
     
 // ==================
 // || LOCAL SEARCH ||
