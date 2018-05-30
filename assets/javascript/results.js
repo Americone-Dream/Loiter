@@ -36,16 +36,6 @@ $('#h9').hide();
 //search
 $("#searchButton").on("click", function(event) {
         event.preventDefault();
-        $('#event0').empty();
-        $('#event1').empty();
-        $('#event2').empty();
-        $('#event3').empty();
-        $('#event4').empty();
-        $('#event5').empty();
-        $('#event6').empty();
-        $('#event7').empty();
-        $('#event8').empty();
-        $('#event9').empty();
         // window.location = 'results.html'
         let rawSearch = $("#autocomplete-input").val().trim();
         let search = searchString(rawSearch, ' ');
@@ -54,7 +44,20 @@ $("#searchButton").on("click", function(event) {
             url: queryURL2,
             method: "GET"
         }).then(function(responseSearch) { 
-            console.log(responseSearch);
+            console.log(responseSearch.events[0]);
+            if (responseSearch.events[0] == undefined){
+                return;
+            }
+            $('#event0').empty();
+            $('#event1').empty();
+            $('#event2').empty();
+            $('#event3').empty();
+            $('#event4').empty();
+            $('#event5').empty();
+            $('#event6').empty();
+            $('#event7').empty();
+            $('#event8').empty();
+            $('#event9').empty();
             let img = responseSearch.events[0].performers[0].image;
             if (img !== null){
                     $('#img').attr('src', img);

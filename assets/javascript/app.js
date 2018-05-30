@@ -90,7 +90,6 @@ function searchString(string, separator) {
     for (let i = 0; i < 3; i++){
         let title = result.events[i].title;
         let split = title.split('-', 1);
-        split = title.split('(', 1);
         //start url
         let link = result.events[i].url;           
         //venue info/stats
