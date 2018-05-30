@@ -18,7 +18,12 @@
         <!---->
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        
+        <!-- Important map setup -->
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />
 </head>
 <body>
     <!-- <video autoplay loop muted poster id='background'>
@@ -63,7 +68,7 @@
                         <input type="text" id="autocomplete-input" placeholder="Search Events" class="autocomplete">
                     </div>
                     <div class="col s4 m3 l2" id="searchButtonCol">
-                            <a class="waves-effect waves-light btn" id="searchButton">Search</a>
+                            <a class="waves-effect waves-light btn" id="searchButton" href="results.html">Search</a>
                     </div>
                 </div>
             </div>
@@ -143,6 +148,8 @@
             </div>
         </div>
     </div>
+    <!-- temp map holder -->
+    <div style="width: 640px; height: 480px" id='mapContainer'></div>
 </div>
 
 
