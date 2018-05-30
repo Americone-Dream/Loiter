@@ -1,6 +1,6 @@
 //DOCUMENT READY
 $(document).ready(function(){
-
+var result = '';
 //========================================================================================================================
 // NOTES
 //========================================================================================================================
@@ -67,26 +67,10 @@ function searchString(string, separator) {
     var joinedString = stringToArray.join('-');
     return joinedString;
 }
-
-
-
-
-
-
-
-    // ==================
-    // || LANDING PAGE ||
-    // ==================
-
-    var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(responsePopular) { 
-        console.log(responsePopular);
-        var result = responsePopular;
-    
+function displayCard(){
+    $('#eventInfo0').empty();
+    $('#eventInfo1').empty();
+    $('#eventInfo2').empty();
     for (let i = 0; i < 3; i++){
         let title = result.events[i].title;
         let split = title.split('-', 1);
@@ -98,6 +82,8 @@ function searchString(string, separator) {
         let venueZip = result.events[i].venue.extended_address;
         let avgPrice = result.events[i].stats.average_price;
         let lowPrice = result.events[i].stats.lowest_price;
+        let venueLL = result.events[i].venue.location;
+        console.log(venueLL);
         let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
 
@@ -163,7 +149,26 @@ function searchString(string, separator) {
             }
             
         }
+}
 
+
+
+
+
+
+    // ==================
+    // || LANDING PAGE ||
+    // ==================
+
+    var queryURL = 'https://api.seatgeek.com/2/events?client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(responsePopular) { 
+        console.log(responsePopular);
+        result = responsePopular;
+        displayCard();
     });
 
 // =====================
@@ -252,15 +257,17 @@ function searchString(string, separator) {
     
     $('#eventsNearMe').click(function() {
         event.preventDefault();
-        window.location = 'local.html'
+        // window.location = 'local.html'
 
-        // var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
-        // $.ajax({
-        //     url: queryLocal,
-        //     method: 'GET'
-        // }).then(function(responseLocal) {
-        //     console.log(responseLocal);
-        // })
+        var queryLocal = 'https://api.seatgeek.com/2/events?geoip=true&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+        $.ajax({
+            url: queryLocal,
+            method: 'GET'
+        }).then(function(responseLocal) {
+            console.log(responseLocal);
+            result = responseLocal;
+            displayCard();
+        })
 
         
     });
