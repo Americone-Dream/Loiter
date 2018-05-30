@@ -24,7 +24,7 @@
     background: transparent;
     border: none;
     box-shadow: none;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -42,6 +42,13 @@
 .card-title{
     font-family:'Montserrat', sans-serif;
     
+}
+.card{
+    max-height: 90%;
+    min-height: 70%;
+    min-width: 300px;
+    max-width: 314px;
+    margin: 8px auto;
 }
 
 .eventsRow{
@@ -94,6 +101,8 @@
 }
 .cardContainer{
     padding-top: 20px;
+    margin: 0 auto;
+    width: 80%;
 }
 
  #searchIcon{
