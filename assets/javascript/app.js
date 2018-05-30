@@ -75,8 +75,7 @@ function displayCard(){
     $('#eventInfo2').empty();
     for (let i = 0; i < 3; i++){
         let title = result.events[i].title;
-        let split = title.split('-', 1);
-        split = title.split('(', 1);
+        let split = title.split('(', 1);
         splitunedit = split;
         if(split[0].length > 27){
             split=split[0].slice(0,27).concat("...");
@@ -163,6 +162,9 @@ function displayCard(){
 }
 
 
+
+
+
     // ==================
     // || LANDING PAGE ||
     // ==================
@@ -177,6 +179,7 @@ function displayCard(){
         result = responsePopular;
         displayCard();
     });
+    $('#totalResultsPageDiv').hide();
 
 // =====================
 // || SEARCH FUNCTION ||
