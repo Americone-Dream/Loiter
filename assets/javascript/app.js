@@ -39,7 +39,8 @@ var locations = [''];
     // Map setup
     var platform = new H.service.Platform({
         'app_id': '4pLGlEJpsN5pPookNa3k',
-        'app_code': '4ocYltkVtb1XMprLlf4zsg'
+        'app_code': '4ocYltkVtb1XMprLlf4zsg',
+        useHTTPS: 'true'
     });
     var defaultLayers = platform.createDefaultLayers();
     var map = new H.Map(
@@ -160,10 +161,6 @@ function displayCard(){
             
         }
 }
-
-
-
-
 
 
     // ==================
