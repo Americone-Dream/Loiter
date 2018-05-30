@@ -90,10 +90,7 @@ function displayCard(){
         let avgPrice = result.events[i].stats.average_price;
         let lowPrice = result.events[i].stats.lowest_price;
         let venueLL = result.events[i].venue.location;
-        console.log(venueLL);
         locations.push(venueLL);
-        console.log(locations);
-
         let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
 
@@ -129,44 +126,45 @@ function searchDisplay(){
             if (responseSearch.events[0] == undefined){
                 return;
             }
+            let collapse = responseSearch.events.length;
+            console.log(collapse);
             let img = responseSearch.events[0].performers[0].image;
             if (img !== null){
                     $('#img').attr('src', img);
                 }
-    for (i = 0; i <= 9; i++) {
-                $('#sevent' + i).empty();
-                $('#h' + i).slideDown();
-                let title = responseSearch.events[i].title;
-        //let splitTitle = title.split('-', 1);
-        //let splitTitle = title.split('(', 1);
-                let link = responseSearch.events[i].url;           
-            //venue info/stats stored in lets.
-                let venueInfo = responseSearch.events[i].venue.name;
-                let venueAddy = responseSearch.events[i].venue.address;
-                let venueZip = responseSearch.events[i].venue.extended_address;
-                let avgPrice = responseSearch.events[i].stats.average_price;
-                let lowPrice = responseSearch.events[i].stats.lowest_price;
-
-                let venueLL = responseSearch.events[i].venue.location;
-                console.log(venueLL);
-                locations.push(venueLL);
-                console.log(locations);
-
-                let venueTime = responseSearch.events[i].datetime_utc;
-                venueTime = moment(venueTime).format('LLLL');
-                console.log(venueInfo);
-            //display information
-            // if (i == 0){
-                $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-                $('#sevent' + i).append(venueZip + '</p><br>');
-                if (avgPrice !== null || lowPrice !==null){
-                    $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                    $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-                }
-                $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                $('#slink' + i).attr('href', link);
-                $('#stitle' + i).text(title);
+            $('#totalLandingPageDiv').hide();
+            $('#totalResultsPageDiv').slideDown(); 
+        for (let i = 0; i <= 9; i++) {
+            $('#sevent' + i).empty();
+            $('#h' + i).slideDown();
+            for (let i = collapse; i <= 9; i++){
+                $('#h' + i).hide();
+            }
+            let title = responseSearch.events[i].title;
+            let link = responseSearch.events[i].url;           
+            //venue info
+            let venueInfo = responseSearch.events[i].venue.name;
+            let venueAddy = responseSearch.events[i].venue.address;
+            let venueZip = responseSearch.events[i].venue.extended_address;
+            let avgPrice = responseSearch.events[i].stats.average_price;
+            let lowPrice = responseSearch.events[i].stats.lowest_price;
+            //Long and Lat for map.
+            let venueLL = responseSearch.events[i].venue.location;
+            //push locations into array
+            locations.push(venueLL);
+            //event time
+            let venueTime = responseSearch.events[i].datetime_utc;
+            venueTime = moment(venueTime).format('LLLL');
+            $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+            $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+            $('#sevent' + i).append(venueZip + '</p><br>');
+            if (avgPrice !== null || lowPrice !==null){
+                $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+                $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+            }
+            $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+            $('#slink' + i).attr('href', link);
+            $('#stitle' + i).text(title);
     } //loop end
     });//ajax end
 }// function end
@@ -197,11 +195,9 @@ function searchDisplay(){
 
 $("#landingSearchButton").on("click", function(event) {
         event.preventDefault();
-        $('#totalLandingPageDiv').hide();
-        $('#totalResultsPageDiv').slideDown();
         // window.location = 'results.html'
         rawSearch = $("#autocomplete-input").val().trim();
-        searchDisplay();  
+        searchDisplay(); 
         });
 $("#searchButton").on("click", function(event) {
         event.preventDefault();
