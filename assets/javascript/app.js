@@ -75,8 +75,7 @@ var rawSearch = '';
     var mapEvents = new H.mapevents.MapEvents(map);
     map.addEventListener('tap', function(evt) {
     });
-    //////////////////////////////////////////////try map work?!
-      /////////////////////////////////////////////////
+    
     var behavior = new H.mapevents.Behavior(mapEvents);
     var ui = H.ui.UI.createDefault(map, defaultLayers);
 

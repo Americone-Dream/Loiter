@@ -319,10 +319,36 @@ body {
     flex: 1 0 auto;
   }
 
-
-@media screen and (max-width: 992px){
-    
+@media only screen and (max-width:1200px){
+    #mapContainer {
+        width: 535px;
+        height: 435px;
+    }
 }
-@media screen and (max-width: 600px){
-    
+@media only screen and (max-width: 820px){
+    #mapContainer {
+        width: 502px;
+        height: 412px;
+    }
+}
+@media only screen and (max-width: 650px){
+    #mapContainer {
+        width: 380px;
+        height: 314px;
+    }
+}
+@media only screen and (max-width: 510px){
+    #mapContainer {
+        width: 300px;
+        height: 300px;
+    }
+@media only screen and (max-width: 380px){
+    #mapContainer {
+        width: 250px;
+        height: 250px;
+        }
+    }
+    #loiterText{
+        display: none;
+    }
 }
