@@ -9,7 +9,10 @@ li,
 li span,
 li i,
 .collapsible-header,
-.collapsible-body {
+.collapsible-body,
+.resultsTitleHead,
+.fa-anchor,
+#navHeaderLogo {
     cursor: pointer;
 }
 
