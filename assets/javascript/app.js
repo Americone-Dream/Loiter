@@ -236,7 +236,16 @@ $("#searchButton").on("click", function(event) {
         rawSearch = $("#results-autocomplete-input").val().trim();
         searchDisplay();
         });
-
+$("#autocomplete-input").keydown(function(event){
+    if(event.keyCode === 13){
+        $("#landingSearchButton").trigger("click");
+    }
+    });
+$("#results-autocomplete-input").keydown(function(event){
+    if(event.keyCode === 13){
+    $("#searchButton").trigger("click");
+    }
+    });
 // ==================
 // || LOCAL SEARCH ||
 // ==================
