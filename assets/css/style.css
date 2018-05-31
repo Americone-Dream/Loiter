@@ -79,10 +79,12 @@ hr.pEvents {
 }
 
 .card{
-    max-height: 90%;
+    /* max-height: 90%;
     min-height: 70%;
     min-width: 300px;
-    max-width: 314px;
+    max-width: 314px; */
+    height: 390px;
+    width: 314px;
     margin: 8px auto;
     border-radius: 15px;
 }
@@ -120,6 +122,7 @@ hr.pEvents {
 }
 .buyButton{
     border-radius: 15px;
+    /* margin-top: 20px; */
 }
 
 #autocomplete-input {
@@ -163,12 +166,14 @@ hr.pEvents {
     margin-top: 4px;
     padding: 0;
 }
-
+#link0,
+#link1,
+#link2,
 #cardLink0,
 #cardLink1,
 #cardLink2 {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
