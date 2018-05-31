@@ -45,6 +45,14 @@
     font-size: 24px;
     text-align: center;
     color: #00acc1;
+    margin-bottom: 10px;
+}
+
+hr.pEvents {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #f5f5f5, #00acc1, #f5f5f5);
 }
 
 .card-title{
@@ -111,6 +119,7 @@
 #cardContainerBackground{
     height: 500px;
     background: #f5f5f5;
+    height: 100%;
     /* background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3)); */
 }
 .cardContainer{
