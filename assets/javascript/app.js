@@ -40,12 +40,14 @@ $(document).ready(function(){
 locations = new Array();
 var result = '';
 var rawSearch = '';
+
 // Map setup
 var platform = new H.service.Platform({
     'app_id': '4pLGlEJpsN5pPookNa3k',
     'app_code': '4ocYltkVtb1XMprLlf4zsg',
     useHTTPS: 'true'
 });
+
 // Basic layout for map
 var defaultLayers = platform.createDefaultLayers();
 var map = new H.Map(
@@ -55,28 +57,7 @@ var map = new H.Map(
         zoom: 10,
         center: { lng: -118.2448171, lat: 34.0352762}
     });
-// Search for food and drink
-var group = new H.map.Group();
-map.addObject(group);
-var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
-var params = {
-    'q': 'food&drink',
-    // 'in': '34.0352762,-118.2448171;r=1500'
-    'in': 'latitude' + ',' + 'longitude' + 'r=1500'
-};
-function onResult(data) {
-    addPlacesToMap(data.results);
-}
-function onError(data) {
-    error = data;
-}
-function addPlacesToMap(result) {
-    group.addObjects(result.items.map(function (place) {
-    var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
-    return marker;
-}));
-}
-search.request(params, {}, onResult, onError);
+
 // Map event controls
 var mapEvents = new H.mapevents.MapEvents(map);
 map.addEventListener('tap', function(evt) {
@@ -319,7 +300,30 @@ $(".collapsible-header").click(function(){
     map.addObject(mapMarker);
     map.setCenter(coords);
     map.setZoom(13);
+    // Search for food and drink
+    var group = new H.map.Group();
+    map.addObject(group);
+    var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
+    var params = {
+        'q': 'food&drink',
+        // 'in': '34.0352762,-118.2448171;r=1500'
+        'in': latitude + ',' + longitude + 'r=1500'
+    };
+    function onResult(data) {
+        addPlacesToMap(data.results);
+    }
+    function onError(data) {
+        error = data;
+    }
+    function addPlacesToMap(result) {
+        group.addObjects(result.items.map(function (place) {
+        var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
+        return marker;
+    }));
+    }
+    search.request(params, {}, onResult, onError);
     // hasMarker = True;
+    
 });
 
 });//document end
