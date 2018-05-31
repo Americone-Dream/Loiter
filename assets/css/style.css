@@ -6,13 +6,15 @@
 
 #landingJumbotron {
     /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
-    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
+    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
+    background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
     margin: none;
 }
 
 #navDivFluid {
     /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
-    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
+    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
+    background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
 }
 
 #navHeaderLogo {
@@ -85,7 +87,7 @@
     border-radius: 15px;
     text-align: center;
     /* background: #f44336; */
-    background: #4db6ac;
+    background: #00acc1;
     float: right;
 }
 .buyButton{
@@ -113,7 +115,7 @@
 
  #searchIcon{
      /* color: #f44336; */
-     color: #4db6ac;
+     color: #00acc1;
      padding: 0;
      margin: 0;
  }
@@ -138,12 +140,21 @@
 }
 
 .buyButton {
-    background: #4db6ac;
+    background: #00acc1;
 }
 
-#mapContainer {
-    width: 640px;
-    height: 480px;
+
+#loiterFooter {
+    background: #00acc1;
+}
+
+.topFooter {
+    margin-bottom: 8px;
+}
+
+.footerLink {
+    color: #f5f5f5;;
+    line-height: 20px;
 }
 
 /* RESULTS CSS RESULTS CSS RESULTS CSS */
@@ -153,7 +164,8 @@
 }
 
 #resultsJumbotron {
-    background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8));
+    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
+    background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
     margin-bottom: 20px;
 }
 
@@ -200,7 +212,7 @@
 }
 
 #resultsSearchIcon {
-    color: #4db6ac;
+    color: #00acc1;
      /* color: #f44336; */
      padding: 0;
      margin: 0;
@@ -220,4 +232,9 @@
 #resultsPlaceholderImg {
     margin-right: 0;
     padding: 0;
+}
+
+#mapContainer {
+    width: 640px;
+    height: 480px;
 }
