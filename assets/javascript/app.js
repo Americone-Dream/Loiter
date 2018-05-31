@@ -66,8 +66,6 @@ var rawSearch = '';
     // Map event controls
     var mapEvents = new H.mapevents.MapEvents(map);
     map.addEventListener('tap', function(evt) {
-        // Only here so I can see actions being read by the map
-        console.log(evt.type, evt.currentPointer.type); 
     });
     //////////////////////////////////////////////try map work?!
       /////////////////////////////////////////////////
@@ -295,13 +293,6 @@ $(".collapsible-header").click(function(){
     map.setCenter(coords);
     map.setZoom(13);
     // map.removeObject(mapMarker);
-    
-
-
-
-
-}); 
-
-
+});
 
 });//document end
