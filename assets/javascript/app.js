@@ -147,10 +147,6 @@ function searchDisplay(){
                 return;
             }
             let collapse = responseSearch.events.length;
-            let img = responseSearch.events[0].performers[0].image;
-            if (img !== null){
-                    $('#img').attr('src', img);
-                }
             $('#totalLandingPageDiv').hide();
             $("#totalLandingPageDiv").attr("isShowing",false);
             $("#totalResultsPageDiv").attr("isShowing",true);
@@ -192,10 +188,6 @@ function searchDisplay(){
 }// function end
 function nearDisplay(){
     let collapse = result2.events.length;
-    let img = result2.events[0].performers[0].image;
-    if (img !== null){
-        $('#img').attr('src', img);
-        }
         $('#totalLandingPageDiv').hide();
         $('#totalResultsPageDiv').slideDown(); 
         locations = [];
@@ -228,6 +220,24 @@ function nearDisplay(){
             $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
         }
         $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+        $('#slink' + i).attr('href', link);
+        $('#stitle' + i).text(title);
+    }
+
+}
+function navDisplay(){
+    let collapse = result2.performers.length;
+        $('#totalLandingPageDiv').hide();
+        $('#totalResultsPageDiv').slideDown(); 
+        locations = [];
+    for (let i = 0; i <= 9; i++) {
+        $('#sevent' + i).empty();
+        $('#h' + i).slideDown();
+        for (let i = collapse; i <= 9; i++){
+            $('#h' + i).hide();
+        }
+        let title = result2.performers[i].name;
+        let link = result2.performers[i].url;           
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
     }
@@ -307,12 +317,29 @@ $(".collapsible-header").click(function(){
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
     map.setCenter(coords);
-<<<<<<< HEAD
-}); 
-=======
     map.setZoom(13);
     // map.removeObject(mapMarker);
 });
+// ==================
+// || NAV ITEM API ||
+// ==================
 
->>>>>>> origin/master
+$(".navValue").click(function(){
+    var navSearch = $(this).attr("value");
+    console.log(navSearch);
+    var queryLocal3 = 'https://api.seatgeek.com/2/performers?taxonomies.name=' + navSearch + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+    $.ajax({
+        url: queryLocal3,
+        method: 'GET'
+    }).then(function(responseNav) {
+        result2 = responseNav;
+        console.log(result2);
+        navDisplay();
+    });      
+});    
+
+
+
+
+
 });//document end
