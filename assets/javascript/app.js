@@ -25,7 +25,7 @@ $(document).ready(function(){
           "Google": 'https://placehold.it/250x250'
         },
         onAutocomplete: function(){
-            if($("#totalLandingPageDiv").attr("isShowing") == true){
+            if($("#totalLandingPageDiv").attr("isShowing") == "true"){
                 $("#landingSearchButton").click();
             }else{
                 $("#searchButton").click();
@@ -152,8 +152,8 @@ function searchDisplay(){
                     $('#img').attr('src', img);
                 }
             $('#totalLandingPageDiv').hide();
-            $("#totalLandingPageDiv").attr("isShowing",false);
-            $("#totalResultsPageDiv").attr("isShowing",true);
+            $("#totalLandingPageDiv").attr("isShowing","false");
+            $("#totalResultsPageDiv").attr("isShowing","true");
             $('#totalResultsPageDiv').slideDown(); 
             locations = [];
         for (let i = 0; i <= 9; i++) {
@@ -267,16 +267,10 @@ $("#autocomplete-input").keydown(function(event){
     if(event.keyCode === 13){
         $("#landingSearchButton").trigger("click");
     }});
-//click//
-$("#autocomplete-input").click(function(){
-    if($(this).text()!== ""){
-        $("#landingSearchButton").trigger("click");
-    }
-});
-//
+
 $("#results-autocomplete-input").keydown(function(event){
     if(event.keyCode === 13){
-    $("#searchButton").trigger("click");
+        $("#searchButton").trigger("click");
     }
     });
 // ==================
