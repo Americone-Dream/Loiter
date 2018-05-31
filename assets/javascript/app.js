@@ -25,17 +25,11 @@ $(document).ready(function(){
           "Google": 'https://placehold.it/250x250'
         },
       });
-
-
-
-
-
-
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
+locations = new Array();
 var result = '';
-var locations = [''];
 var rawSearch = '';
     // Map setup
     var platform = new H.service.Platform({
@@ -58,10 +52,7 @@ var rawSearch = '';
     });
     var behavior = new H.mapevents.Behavior(mapEvents);
     var ui = H.ui.UI.createDefault(map, defaultLayers);
-      
-
-
-
+    
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
@@ -89,8 +80,7 @@ function displayCard(){
         let venueZip = result.events[i].venue.extended_address;
         let avgPrice = result.events[i].stats.average_price;
         let lowPrice = result.events[i].stats.lowest_price;
-        let venueLL = result.events[i].venue.location;
-        locations.push(venueLL);
+        
         let venueTime = result.events[i].datetime_utc;
         venueTime = moment(venueTime).format('LLLL');
 
@@ -98,22 +88,23 @@ function displayCard(){
             // || CARD ELEMENT ||
             // ==================
    
-                $('#eventInfo' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-                $('#eventInfo' + i).append('<p><b>Address: </b><br>' + venueAddy + '<br>');
-                $('#eventInfo' + i).append(venueZip + '</p><br>');
-                if (avgPrice !== null || lowPrice !==null){
-                    $('#eventInfo' + i).append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
-                    $('#eventInfo' + i).append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
-                }
-                $('#eventInfo' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-                $('#cardLink' + i).attr("href", link);
-                let img = result.events[i].performers[0].image;
-                if (img !== null){
-                    $('#img' + i).attr('src', img);
-                }
-                $('#link' + i).attr('href', link);
-                $('#title' + i).text(splitunedit);
-                $('#event' + i).text(split);
+            $('#eventInfo' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+            $('#eventInfo' + i).append('<p><b>Address: </b><br>' + venueAddy + '<br>');
+            $('#eventInfo' + i).append(venueZip + '</p><br>');
+            if (avgPrice !== null || lowPrice !==null){
+                $('#eventInfo' + i).append('<p><b>Average Price: </b>$' + avgPrice + '</p><br>');
+                $('#eventInfo' + i).append('<p><b>Low Price: </b>$' + lowPrice + '</p><br>');
+            }
+            $('#eventInfo' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+            $('#cardLink' + i).attr("href", link);
+            let img = result.events[i].performers[0].image;
+            $('#img' + i).attr('src', 'assets/images/anchor.svg');
+            if (img !== null){
+                $('#img' + i).attr('src', img);
+            }
+            $('#link' + i).attr('href', link);
+            $('#title' + i).text(splitunedit);
+            $('#event' + i).text(split);
         }
 }
 function searchDisplay(){
@@ -123,17 +114,18 @@ function searchDisplay(){
             url: queryURL2,
             method: "GET"
         }).then(function(responseSearch) { 
+            console.log(responseSearch);
             if (responseSearch.events[0] == undefined){
                 return;
             }
             let collapse = responseSearch.events.length;
-            console.log(collapse);
             let img = responseSearch.events[0].performers[0].image;
             if (img !== null){
                     $('#img').attr('src', img);
                 }
             $('#totalLandingPageDiv').hide();
             $('#totalResultsPageDiv').slideDown(); 
+            locations = [];
         for (let i = 0; i <= 9; i++) {
             $('#sevent' + i).empty();
             $('#h' + i).slideDown();
@@ -168,11 +160,49 @@ function searchDisplay(){
     } //loop end
     });//ajax end
 }// function end
+function nearDisplay(){
+    let collapse = result2.events.length;
+    let img = result2.events[0].performers[0].image;
+    if (img !== null){
+        $('#img').attr('src', img);
+        }
+        $('#totalLandingPageDiv').hide();
+        $('#totalResultsPageDiv').slideDown(); 
+        locations = [];
+    for (let i = 0; i <= 9; i++) {
+        $('#sevent' + i).empty();
+        $('#h' + i).slideDown();
+        for (let i = collapse; i <= 9; i++){
+            $('#h' + i).hide();
+        }
+        let title = result2.events[i].title;
+        let link = result2.events[i].url;           
+        //venue info
+        let venueInfo = result2.events[i].venue.name;
+        let venueAddy = result2.events[i].venue.address;
+        let venueZip = result2.events[i].venue.extended_address;
+        let avgPrice = result2.events[i].stats.average_price;
+        let lowPrice = result2.events[i].stats.lowest_price;
+        //Long and Lat for map.
+        let venueLL = result2.events[i].venue.location;
+        //push locations into array
+        locations.push(venueLL);
+        //event time
+        let venueTime = result2.events[i].datetime_utc;
+        venueTime = moment(venueTime).format('LLLL');
+        $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+        $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+        $('#sevent' + i).append(venueZip + '</p><br>');
+        if (avgPrice !== null || lowPrice !==null){
+            $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+            $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+        }
+        $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+        $('#slink' + i).attr('href', link);
+        $('#stitle' + i).text(title);
+    }
 
-
-
-
-
+}
     // ==================
     // || LANDING PAGE ||
     // ==================
@@ -183,7 +213,6 @@ function searchDisplay(){
         url: queryURL,
         method: "GET"
     }).then(function(responsePopular) { 
-        console.log(responsePopular);
         result = responsePopular;
         displayCard();
     });
@@ -204,65 +233,7 @@ $("#searchButton").on("click", function(event) {
         rawSearch = $("#results-autocomplete-input").val().trim();
         searchDisplay();
         });
-            // will have to take another look at this for loop if we want to implement pagination
-            
-                // if (responseSearch.events.length == 1){
-                //     $('#h1').hide();
-                //     $('#h2').hide();
-                //     $('#h3').hide();
-                //     $('#h4').hide();
-                //     $('#h5').hide();
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 2){
-                //     $('#h2').hide();
-                //     $('#h3').hide();
-                //     $('#h4').hide();
-                //     $('#h5').hide();
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 3){
-                //     $('#h3').hide();
-                //     $('#h4').hide();
-                //     $('#h5').hide();
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 4){
-                //     $('#h4').hide();
-                //     $('#h5').hide();
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 5){
-                //     $('#h5').hide();
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 6){
-                //     $('#h6').hide();
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 7){
-                //     $('#h7').hide();
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 8){
-                //     $('#h8').hide();
-                //     $('#h9').hide();
-                // } else if (responseSearch.events.length == 9){
-                //     $('#h9').hide();
-                // }
-  
-    
+
 // ==================
 // || LOCAL SEARCH ||
 // ==================
@@ -274,22 +245,18 @@ $("#searchButton").on("click", function(event) {
             url: queryLocal,
             method: 'GET'
         }).then(function(responseLocal) {
-            console.log(responseLocal);
-            result = responseLocal;
-            displayCard();
-        })
-
-        
+            result2 = responseLocal;
+            nearDisplay();
+        })        
     });
 
 // ==============
 // || HERE API ||
 // ==============
 
-    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
     let lat = '';
     let lgn = '';
-
+    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
     $.ajax({
         url: queryHere,
         method: 'GET'
@@ -297,3 +264,19 @@ $("#searchButton").on("click", function(event) {
         console.log(responseHere);
     });
 });
+
+// ===========================
+// || HERE API MAP LOCATION ||
+// ===========================
+
+$(".collapsible-header").click(function(){
+    console.log(locations);
+    var mapLocate = $(this).attr("value");
+    console.log(mapLocate);
+
+
+
+
+
+
+}); 
