@@ -160,6 +160,49 @@ function searchDisplay(){
     } //loop end
     });//ajax end
 }// function end
+function nearDisplay(){
+    let collapse = result2.events.length;
+    let img = result2.events[0].performers[0].image;
+    if (img !== null){
+        $('#img').attr('src', img);
+        }
+        $('#totalLandingPageDiv').hide();
+        $('#totalResultsPageDiv').slideDown(); 
+        locations = [];
+    for (let i = 0; i <= 9; i++) {
+        $('#sevent' + i).empty();
+        $('#h' + i).slideDown();
+        for (let i = collapse; i <= 9; i++){
+            $('#h' + i).hide();
+        }
+        let title = result2.events[i].title;
+        let link = result2.events[i].url;           
+        //venue info
+        let venueInfo = result2.events[i].venue.name;
+        let venueAddy = result2.events[i].venue.address;
+        let venueZip = result2.events[i].venue.extended_address;
+        let avgPrice = result2.events[i].stats.average_price;
+        let lowPrice = result2.events[i].stats.lowest_price;
+        //Long and Lat for map.
+        let venueLL = result2.events[i].venue.location;
+        //push locations into array
+        locations.push(venueLL);
+        //event time
+        let venueTime = result2.events[i].datetime_utc;
+        venueTime = moment(venueTime).format('LLLL');
+        $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+        $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+        $('#sevent' + i).append(venueZip + '</p><br>');
+        if (avgPrice !== null || lowPrice !==null){
+            $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+            $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+        }
+        $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+        $('#slink' + i).attr('href', link);
+        $('#stitle' + i).text(title);
+    }
+
+}
     // ==================
     // || LANDING PAGE ||
     // ==================
@@ -203,46 +246,7 @@ $("#searchButton").on("click", function(event) {
             method: 'GET'
         }).then(function(responseLocal) {
             result2 = responseLocal;
-            let collapse = result2.events.length;
-            let img = result2.events[0].performers[0].image;
-            if (img !== null){
-                    $('#img').attr('src', img);
-                }
-            $('#totalLandingPageDiv').hide();
-            $('#totalResultsPageDiv').slideDown(); 
-            locations = [];
-        for (let i = 0; i <= 9; i++) {
-            $('#sevent' + i).empty();
-            $('#h' + i).slideDown();
-            for (let i = collapse; i <= 9; i++){
-                $('#h' + i).hide();
-            }
-            let title = result2.events[i].title;
-            let link = result2.events[i].url;           
-            //venue info
-            let venueInfo = result2.events[i].venue.name;
-            let venueAddy = result2.events[i].venue.address;
-            let venueZip = result2.events[i].venue.extended_address;
-            let avgPrice = result2.events[i].stats.average_price;
-            let lowPrice = result2.events[i].stats.lowest_price;
-            //Long and Lat for map.
-            let venueLL = result2.events[i].venue.location;
-            //push locations into array
-            locations.push(venueLL);
-            //event time
-            let venueTime = result2.events[i].datetime_utc;
-            venueTime = moment(venueTime).format('LLLL');
-            $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-            $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-            $('#sevent' + i).append(venueZip + '</p><br>');
-            if (avgPrice !== null || lowPrice !==null){
-                $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-                $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-            }
-            $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-            $('#slink' + i).attr('href', link);
-            $('#stitle' + i).text(title);
-    }
+            nearDisplay();
         })        
     });
 
