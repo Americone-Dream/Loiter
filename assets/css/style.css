@@ -41,11 +41,19 @@
 
 .card-title{
     font-family:'Montserrat', sans-serif;
-    
 }
+/* added for card height */
+#event0,#event1,#event2{
+    font-size: 20px;
+}
+.card .card-content{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+/* added for card height */
 .card{
     max-height: 90%;
-    min-height: 70%;
+    min-height: 90%;
     min-width: 300px;
     max-width: 314px;
     margin: 8px auto;

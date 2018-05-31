@@ -55,6 +55,8 @@ var locations = [''];
         // only here so I can see actions being read by the map
         console.log(evt.type, evt.currentPointer.type); 
     });
+    //////////////////////////////////////////////try map work?!
+      /////////////////////////////////////////////////
     var behavior = new H.mapevents.Behavior(mapEvents);
     var ui = H.ui.UI.createDefault(map, defaultLayers);
       
@@ -78,8 +80,9 @@ function displayCard(){
         let split = title.split('-', 1);
         split = title.split('(', 1);
         splitunedit = split;
-        if(split[0].length > 27){
-            split=split[0].slice(0,27).concat("...");
+        //before it was 27
+        if(split[0].length > 24){
+            split=split[0].slice(0,24).concat("...");
         }
         //start url
         let link = result.events[i].url;           
