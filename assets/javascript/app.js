@@ -28,6 +28,7 @@ $(document).ready(function(){
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
+locations = new Array();
 var result = '';
 var rawSearch = '';
     // Map setup
@@ -97,6 +98,7 @@ function displayCard(){
             $('#eventInfo' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
             $('#cardLink' + i).attr("href", link);
             let img = result.events[i].performers[0].image;
+            $('#img' + i).attr('src', 'assets/images/placeholder-golf-1.jpg');
             if (img !== null){
                 $('#img' + i).attr('src', img);
             }
@@ -117,13 +119,13 @@ function searchDisplay(){
                 return;
             }
             let collapse = responseSearch.events.length;
-            console.log(collapse);
             let img = responseSearch.events[0].performers[0].image;
             if (img !== null){
                     $('#img').attr('src', img);
                 }
             $('#totalLandingPageDiv').hide();
             $('#totalResultsPageDiv').slideDown(); 
+            locations = [];
         for (let i = 0; i <= 9; i++) {
             $('#sevent' + i).empty();
             $('#h' + i).slideDown();
@@ -141,7 +143,6 @@ function searchDisplay(){
             //Long and Lat for map.
             let venueLL = responseSearch.events[i].venue.location;
             //push locations into array
-            locations = new Array();
             locations.push(venueLL);
             //event time
             let venueTime = responseSearch.events[i].datetime_utc;
@@ -225,8 +226,10 @@ $("#searchButton").on("click", function(event) {
 // || HERE API MAP LOCATION ||
 // ===========================
 
-$(".collapsible").click(function(){
+$(".collapsible-header").click(function(){
     console.log(locations);
+    var mapLocate = $(this).attr("value");
+    console.log(mapLocate);
 
 
 
