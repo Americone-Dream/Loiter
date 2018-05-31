@@ -1,6 +1,6 @@
 //DOCUMENT READY
 $(document).ready(function(){
-
+    
 //========================================================================================================================
 // NOTES
 //========================================================================================================================
@@ -33,26 +33,45 @@ var result = '';
 var rawSearch = '';
     // Map setup
     var platform = new H.service.Platform({
+        // Below line was added as part of the search feature
+        useCIT: true,
         'app_id': '4pLGlEJpsN5pPookNa3k',
         'app_code': '4ocYltkVtb1XMprLlf4zsg',
         useHTTPS: 'true'
     });
+    // Search for food and drink
+    var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
+    var params = {
+        'q': 'food&drink',
+        'in': '34.0352762,-118.2448171;r=1500'
+        //  latitude + ',' + longitude + 'r=1500'
+    };
+
+    function onResult(data) {
+        searchResult = data;
+    }
+    function onError(data) {
+        error = data;
+    }
+    search.request(params, {}, onResult, onError);
+    // Basic layout for map
     var defaultLayers = platform.createDefaultLayers();
     var map = new H.Map(
         document.getElementById('mapContainer'),
         defaultLayers.normal.map,
         {
           zoom: 10,
-          center: { lng: -118, lat: 34}
+          center: { lng: -118.2448171, lat: 34.0352762}
         });
+    // Map event controls
     var mapEvents = new H.mapevents.MapEvents(map);
     map.addEventListener('tap', function(evt) {
-        // only here so I can see actions being read by the map
+        // Only here so I can see actions being read by the map
         console.log(evt.type, evt.currentPointer.type); 
     });
     var behavior = new H.mapevents.Behavior(mapEvents);
     var ui = H.ui.UI.createDefault(map, defaultLayers);
-    
+
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
@@ -254,29 +273,26 @@ $("#searchButton").on("click", function(event) {
 // || HERE API ||
 // ==============
 
-    let lat = '';
-    let lgn = '';
-    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
-    $.ajax({
-        url: queryHere,
-        method: 'GET'
-    }).then(function(responseHere) {
-        console.log(responseHere);
-    });
-});
+
+
 
 // ===========================
 // || HERE API MAP LOCATION ||
 // ===========================
 
 $(".collapsible-header").click(function(){
-    console.log(locations);
     var mapLocate = $(this).attr("value");
-    console.log(mapLocate);
-
+    let latitude = locations[mapLocate].lat;
+    let longitude = locations[mapLocate].lon;
+    var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
+    map.addObject(mapMarker);
 
 
 
 
 
 }); 
+
+
+
+});//document end
