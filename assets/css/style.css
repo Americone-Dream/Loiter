@@ -141,6 +141,10 @@
     background: #4db6ac;
 }
 
+#mapContainer {
+    width: 640px;
+    height: 480px;
+}
 
 /* RESULTS CSS RESULTS CSS RESULTS CSS */
 
