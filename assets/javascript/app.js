@@ -281,13 +281,6 @@ $("#results-autocomplete-input").keydown(function(event){
         })        
     });
 
-// ==============
-// || HERE API ||
-// ==============
-
-
-
-
 // ===========================
 // || HERE API MAP LOCATION ||
 // ===========================
@@ -298,13 +291,5 @@ $(".collapsible-header").click(function(){
     let longitude = locations[mapLocate].lon;
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
-
-
-
-
-
 }); 
-
-
-
 });//document end
