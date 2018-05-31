@@ -289,7 +289,9 @@ $(".collapsible-header").click(function(){
     var mapLocate = $(this).attr("value");
     let latitude = locations[mapLocate].lat;
     let longitude = locations[mapLocate].lon;
+    let coords = {lat:latitude, lng:longitude};
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
+    map.setCenter(coords);
 }); 
 });//document end
