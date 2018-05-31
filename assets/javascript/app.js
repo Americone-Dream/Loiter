@@ -209,7 +209,6 @@ function nearDisplay(){
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
     }
-
 }
 function navDisplay(){
     let collapse = result2.performers.length;
@@ -342,8 +341,7 @@ $(".collapsible-header").click(function(){
         return marker;
     }));
     }
-    search.request(params, {}, onResult, onError);
-    
+    search.request(params, {}, onResult, onError);    
 });
 // ==================
 // || NAV ITEM API ||
@@ -362,9 +360,4 @@ $(".navValue").click(function(){
         navDisplay();
     });      
 });    
-
-
-
-
-
 });//document end
