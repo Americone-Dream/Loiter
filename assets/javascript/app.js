@@ -25,7 +25,7 @@ $(document).ready(function(){
           "Google": 'https://placehold.it/250x250'
         },
         onAutocomplete: function(){
-            if($("#totalLandingPageDiv").attr("isShowing") == true){
+            if($("#totalLandingPageDiv").attr("isShowing") == "true"){
                 $("#landingSearchButton").click();
             }else{
                 $("#searchButton").click();
@@ -58,14 +58,13 @@ var map = new H.Map(
         center: { lng: -118.2448171, lat: 34.0352762}
     });
 
-// Map event controls
-var mapEvents = new H.mapevents.MapEvents(map);
-map.addEventListener('tap', function(evt) {
-});
-//////////////////////////////////////////////try map work?!
-    /////////////////////////////////////////////////
-var behavior = new H.mapevents.Behavior(mapEvents);
-var ui = H.ui.UI.createDefault(map, defaultLayers);
+    // Map event controls
+    var mapEvents = new H.mapevents.MapEvents(map);
+    map.addEventListener('tap', function(evt) {
+    });
+
+    var behavior = new H.mapevents.Behavior(mapEvents);
+    var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 //========================================================================================================================
 // FUNCTIONS
@@ -139,8 +138,8 @@ function searchDisplay(){
                     $('#img').attr('src', img);
                 }
             $('#totalLandingPageDiv').hide();
-            $("#totalLandingPageDiv").attr("isShowing",false);
-            $("#totalResultsPageDiv").attr("isShowing",true);
+            $("#totalLandingPageDiv").attr("isShowing","false");
+            $("#totalResultsPageDiv").attr("isShowing","true");
             $('#totalResultsPageDiv').slideDown(); 
             locations = [];
         for (let i = 0; i <= 9; i++) {
@@ -254,16 +253,10 @@ $("#autocomplete-input").keydown(function(event){
     if(event.keyCode === 13){
         $("#landingSearchButton").trigger("click");
     }});
-//click//
-$("#autocomplete-input").click(function(){
-    if($(this).text()!== ""){
-        $("#landingSearchButton").trigger("click");
-    }
-});
-//
+
 $("#results-autocomplete-input").keydown(function(event){
     if(event.keyCode === 13){
-    $("#searchButton").trigger("click");
+        $("#searchButton").trigger("click");
     }
     });
 // ==================
@@ -286,17 +279,13 @@ $("#results-autocomplete-input").keydown(function(event){
 // || HERE API MAP LOCATION ||
 // ===========================
 
-// var hasMarker = False;
-
 $(".collapsible-header").click(function(){
+    // Set marker
     var mapLocate = $(this).attr("value");
     let latitude = locations[mapLocate].lat;
     let longitude = locations[mapLocate].lon;
     let coords = {lat:latitude, lng:longitude};
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
-    // if (hasMarker == True){
-    //     map.removeObject(mapMarker);
-    // }
     map.addObject(mapMarker);
     map.setCenter(coords);
     map.setZoom(13);
@@ -306,8 +295,8 @@ $(".collapsible-header").click(function(){
     var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
     var params = {
         'q': 'food&drink',
-        // 'in': '34.0352762,-118.2448171;r=1500'
-        'in': latitude + ',' + longitude + 'r=1500'
+        'in': '34.0352762,-118.2448171;r=1500'
+        // 'in': latitude + ',' + longitude + 'r=1500'
     };
     function onResult(data) {
         addPlacesToMap(data.results);
@@ -322,7 +311,6 @@ $(".collapsible-header").click(function(){
     }));
     }
     search.request(params, {}, onResult, onError);
-    // hasMarker = True;
     
 });
 
