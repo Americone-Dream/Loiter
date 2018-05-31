@@ -281,13 +281,6 @@ $("#results-autocomplete-input").keydown(function(event){
         })        
     });
 
-// ==============
-// || HERE API ||
-// ==============
-
-
-
-
 // ===========================
 // || HERE API MAP LOCATION ||
 // ===========================
@@ -300,7 +293,9 @@ $(".collapsible-header").click(function(){
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
     map.setCenter(coords);
-
+    map.setZoom(13);
+    // map.removeObject(mapMarker);
+    
 
 
 
