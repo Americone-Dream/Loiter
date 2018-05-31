@@ -25,7 +25,7 @@ $(document).ready(function(){
           "Google": 'https://placehold.it/250x250'
         },
         onAutocomplete: function(){
-            if($("#totalLandingPageDiv").attr("isShowing") === "true"){
+            if($("#totalLandingPageDiv").attr("isShowing") == "true"){
                 $("#landingSearchButton").click();
             }else{
                 $("#searchButton").click();
@@ -74,8 +74,6 @@ var rawSearch = '';
     // Map event controls
     var mapEvents = new H.mapevents.MapEvents(map);
     map.addEventListener('tap', function(evt) {
-        // Only here so I can see actions being read by the map
-        console.log(evt.type, evt.currentPointer.type); 
     });
     //////////////////////////////////////////////try map work?!
       /////////////////////////////////////////////////
@@ -154,8 +152,8 @@ function searchDisplay(){
                     $('#img').attr('src', img);
                 }
             $('#totalLandingPageDiv').hide();
-            $("#totalLandingPageDiv").attr("isShowing",false);
-            $("#totalResultsPageDiv").attr("isShowing",true);
+            $("#totalLandingPageDiv").attr("isShowing","false");
+            $("#totalResultsPageDiv").attr("isShowing","true");
             $('#totalResultsPageDiv').slideDown(); 
             locations = [];
         for (let i = 0; i <= 9; i++) {
@@ -272,7 +270,7 @@ $("#autocomplete-input").keydown(function(event){
 
 $("#results-autocomplete-input").keydown(function(event){
     if(event.keyCode === 13){
-    $("#searchButton").trigger("click");
+        $("#searchButton").trigger("click");
     }
     });
 // ==================
@@ -291,13 +289,6 @@ $("#results-autocomplete-input").keydown(function(event){
         })        
     });
 
-// ==============
-// || HERE API ||
-// ==============
-
-
-
-
 // ===========================
 // || HERE API MAP LOCATION ||
 // ===========================
@@ -306,15 +297,12 @@ $(".collapsible-header").click(function(){
     var mapLocate = $(this).attr("value");
     let latitude = locations[mapLocate].lat;
     let longitude = locations[mapLocate].lon;
+    let coords = {lat:latitude, lng:longitude};
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
-
-
-
-
-
-}); 
-
-
+    map.setCenter(coords);
+    map.setZoom(13);
+    // map.removeObject(mapMarker);
+});
 
 });//document end
