@@ -209,13 +209,11 @@ function nearDisplay(){
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
     }
-
 }
 function navDisplay(){
     let collapse = result2.performers.length;
         $('#totalLandingPageDiv').hide();
         $('#totalResultsPageDiv').slideDown(); 
-        locations = [];
     for (let i = 0; i <= 9; i++) {
         $('#sevent' + i).empty();
         $('#h' + i).slideDown();
@@ -246,6 +244,9 @@ function navDisplay(){
         // $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
+        $('#totalLandingPageDiv').attr('isShowing','false');
+        $('#totalResultPageDiv').attr('isShowing','true');
+
     }
 
 }
@@ -340,8 +341,7 @@ $(".collapsible-header").click(function(){
         return marker;
     }));
     }
-    search.request(params, {}, onResult, onError);
-    
+    search.request(params, {}, onResult, onError);    
 });
 // ==================
 // || NAV ITEM API ||
@@ -360,9 +360,4 @@ $(".navValue").click(function(){
         navDisplay();
     });      
 });    
-
-
-
-
-
 });//document end
