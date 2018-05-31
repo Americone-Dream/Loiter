@@ -224,7 +224,7 @@ function nearDisplay(){
 // =====================
 // || SEARCH FUNCTION ||
 // =====================
-
+$("#searchButton").hide();
 $("#landingSearchButton").on("click", function(event) {
         event.preventDefault();
         // window.location = 'results.html'
