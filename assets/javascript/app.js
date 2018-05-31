@@ -38,26 +38,27 @@ var result = '';
 var locations = [''];
     // Map setup
     var platform = new H.service.Platform({
+        // Below line was added as part of the search feature
         useCIT: true,
         'app_id': '4pLGlEJpsN5pPookNa3k',
         'app_code': '4ocYltkVtb1XMprLlf4zsg',
         useHTTPS: 'true'
     });
     // Search for food and drink
-    var explore = new H.places.Explore(platform.getPlacesService()), exploreResult, error;
-    var params = {
-        'cat': 'eat-drink',
-        'in': '34,-118;r=1500'
-        //  lat + ',' + lng + 'r=1500'
-    };
-    explore.request(params, {}, onResult, onError);
-    function onResult(data) {
-        exploreResult = data;
-    }
-    function onError(data) {
-        error = data;
-    }
-    explore.request(params, {}, onResult, onError);
+    // var explore = new H.places.Explore(platform.getPlacesService()), exploreResult, error;
+    // var params = {
+    //     'cat': 'eat-drink',
+    //     'in': '34.0352762,-118.2448171;r=1500'
+    //     //  lat + ',' + lng + 'r=1500'
+    // };
+    // explore.request(params, {}, onResult, onError);
+    // function onResult(data) {
+    //     exploreResult = data;
+    // }
+    // function onError(data) {
+    //     error = data;
+    // }
+    // explore.request(params, {}, onResult, onError);
     // Basic layout for map
     var defaultLayers = platform.createDefaultLayers();
     var map = new H.Map(
@@ -65,7 +66,7 @@ var locations = [''];
         defaultLayers.normal.map,
         {
           zoom: 10,
-          center: { lng: -118, lat: 34}
+          center: { lng: -118.2448171, lat: 34.0352762}
         });
     // Map event controls
     var mapEvents = new H.mapevents.MapEvents(map);
