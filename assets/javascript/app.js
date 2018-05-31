@@ -133,10 +133,6 @@ function searchDisplay(){
                 return;
             }
             let collapse = responseSearch.events.length;
-            let img = responseSearch.events[0].performers[0].image;
-            if (img !== null){
-                    $('#img').attr('src', img);
-                }
             $('#totalLandingPageDiv').hide();
             $("#totalLandingPageDiv").attr("isShowing","false");
             $("#totalResultsPageDiv").attr("isShowing","true");
@@ -178,10 +174,6 @@ function searchDisplay(){
 }// function end
 function nearDisplay(){
     let collapse = result2.events.length;
-    let img = result2.events[0].performers[0].image;
-    if (img !== null){
-        $('#img').attr('src', img);
-        }
         $('#totalLandingPageDiv').hide();
         $('#totalResultsPageDiv').slideDown(); 
         locations = [];
@@ -214,6 +206,44 @@ function nearDisplay(){
             $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
         }
         $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
+        $('#slink' + i).attr('href', link);
+        $('#stitle' + i).text(title);
+    }
+
+}
+function navDisplay(){
+    let collapse = result2.performers.length;
+        $('#totalLandingPageDiv').hide();
+        $('#totalResultsPageDiv').slideDown(); 
+        locations = [];
+    for (let i = 0; i <= 9; i++) {
+        $('#sevent' + i).empty();
+        $('#h' + i).slideDown();
+        for (let i = collapse; i <= 9; i++){
+            $('#h' + i).hide();
+        }
+        let title = result2.performers[i].name;
+        let link = result2.performers[i].url;           
+        //venue info
+        // let venueInfo = result2.performers[i].name;
+  
+        // let avgPrice = result2.performers[i].stats.average_price;
+        // let lowPrice = result2.performers[i].stats.lowest_price;
+        // //Long and Lat for map.
+        // let venueLL = result2.performers[i].venue.location;
+        // //push locations into array
+        // locations.push(venueLL);
+        // //event time
+        // let venueTime = result2.performers[i].datetime_utc;
+        // venueTime = moment(venueTime).format('LLLL');
+        // $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+        // $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+        // $('#sevent' + i).append(venueZip + '</p><br>');
+        // if (avgPrice !== null || lowPrice !==null){
+        //     $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+        //     $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+        // }
+        // $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
     }
@@ -313,5 +343,26 @@ $(".collapsible-header").click(function(){
     search.request(params, {}, onResult, onError);
     
 });
+// ==================
+// || NAV ITEM API ||
+// ==================
+
+$(".navValue").click(function(){
+    var navSearch = $(this).attr("value");
+    console.log(navSearch);
+    var queryLocal3 = 'https://api.seatgeek.com/2/performers?taxonomies.name=' + navSearch + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
+    $.ajax({
+        url: queryLocal3,
+        method: 'GET'
+    }).then(function(responseNav) {
+        result2 = responseNav;
+        console.log(result2);
+        navDisplay();
+    });      
+});    
+
+
+
+
 
 });//document end
