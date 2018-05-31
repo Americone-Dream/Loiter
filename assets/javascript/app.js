@@ -36,49 +36,55 @@ $(document).ready(function(){
 //========================================================================================================================
 // VARIABLES
 //========================================================================================================================
+
 locations = new Array();
 var result = '';
 var rawSearch = '';
-    // Map setup
-    var platform = new H.service.Platform({
-        // Below line was added as part of the search feature
-        useCIT: true,
-        'app_id': '4pLGlEJpsN5pPookNa3k',
-        'app_code': '4ocYltkVtb1XMprLlf4zsg',
-        useHTTPS: 'true'
+// Map setup
+var platform = new H.service.Platform({
+    'app_id': '4pLGlEJpsN5pPookNa3k',
+    'app_code': '4ocYltkVtb1XMprLlf4zsg',
+    useHTTPS: 'true'
+});
+// Basic layout for map
+var defaultLayers = platform.createDefaultLayers();
+var map = new H.Map(
+    document.getElementById('mapContainer'),
+    defaultLayers.normal.map,
+    {
+        zoom: 10,
+        center: { lng: -118.2448171, lat: 34.0352762}
     });
-    // Search for food and drink
-    var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
-    var params = {
-        'q': 'food&drink',
-        'in': '34.0352762,-118.2448171;r=1500'
-        //  latitude + ',' + longitude + 'r=1500'
-    };
-
-    function onResult(data) {
-        searchResult = data;
-    }
-    function onError(data) {
-        error = data;
-    }
-    search.request(params, {}, onResult, onError);
-    // Basic layout for map
-    var defaultLayers = platform.createDefaultLayers();
-    var map = new H.Map(
-        document.getElementById('mapContainer'),
-        defaultLayers.normal.map,
-        {
-          zoom: 10,
-          center: { lng: -118.2448171, lat: 34.0352762}
-        });
-    // Map event controls
-    var mapEvents = new H.mapevents.MapEvents(map);
-    map.addEventListener('tap', function(evt) {
-    });
-    //////////////////////////////////////////////try map work?!
-      /////////////////////////////////////////////////
-    var behavior = new H.mapevents.Behavior(mapEvents);
-    var ui = H.ui.UI.createDefault(map, defaultLayers);
+// Search for food and drink
+var group = new H.map.Group();
+map.addObject(group);
+var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
+var params = {
+    'q': 'food&drink',
+    // 'in': '34.0352762,-118.2448171;r=1500'
+    'in': 'latitude' + ',' + 'longitude' + 'r=1500'
+};
+function onResult(data) {
+    addPlacesToMap(data.results);
+}
+function onError(data) {
+    error = data;
+}
+function addPlacesToMap(result) {
+    group.addObjects(result.items.map(function (place) {
+    var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
+    return marker;
+}));
+}
+search.request(params, {}, onResult, onError);
+// Map event controls
+var mapEvents = new H.mapevents.MapEvents(map);
+map.addEventListener('tap', function(evt) {
+});
+//////////////////////////////////////////////try map work?!
+    /////////////////////////////////////////////////
+var behavior = new H.mapevents.Behavior(mapEvents);
+var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 //========================================================================================================================
 // FUNCTIONS
@@ -299,16 +305,21 @@ $("#results-autocomplete-input").keydown(function(event){
 // || HERE API MAP LOCATION ||
 // ===========================
 
+// var hasMarker = False;
+
 $(".collapsible-header").click(function(){
     var mapLocate = $(this).attr("value");
     let latitude = locations[mapLocate].lat;
     let longitude = locations[mapLocate].lon;
     let coords = {lat:latitude, lng:longitude};
     var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
+    // if (hasMarker == True){
+    //     map.removeObject(mapMarker);
+    // }
     map.addObject(mapMarker);
     map.setCenter(coords);
     map.setZoom(13);
-    // map.removeObject(mapMarker);
+    // hasMarker = True;
 });
 
 });//document end
