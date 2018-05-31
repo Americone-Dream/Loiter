@@ -1,6 +1,6 @@
 //DOCUMENT READY
 $(document).ready(function(){
-
+    
 //========================================================================================================================
 // NOTES
 //========================================================================================================================
@@ -52,7 +52,7 @@ var rawSearch = '';
     });
     var behavior = new H.mapevents.Behavior(mapEvents);
     var ui = H.ui.UI.createDefault(map, defaultLayers);
-    
+
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
@@ -254,29 +254,26 @@ $("#searchButton").on("click", function(event) {
 // || HERE API ||
 // ==============
 
-    let lat = '';
-    let lgn = '';
-    var queryHere = 'https://places.cit.api.here.com/places/v1/discover/here?at=' + lat + ',' + lgn + '&app_id=4pLGlEJpsN5pPookNa3k&app_code=4ocYltkVtb1XMprLlf4zsg'
-    $.ajax({
-        url: queryHere,
-        method: 'GET'
-    }).then(function(responseHere) {
-        console.log(responseHere);
-    });
-});
+
+
 
 // ===========================
 // || HERE API MAP LOCATION ||
 // ===========================
 
 $(".collapsible-header").click(function(){
-    console.log(locations);
     var mapLocate = $(this).attr("value");
-    console.log(mapLocate);
-
+    let coords = 'lat:' + locations[mapLocate].lat + ', lng:' + locations[mapLocate].lon;
+    console.log(coords);
+    var mapMarker = new H.map.Marker({coords});
+    map.addObject(mapMarker);
 
 
 
 
 
 }); 
+
+
+
+});//document end
