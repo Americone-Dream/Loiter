@@ -282,9 +282,9 @@ $("#searchButton").on("click", function(event) {
 
 $(".collapsible-header").click(function(){
     var mapLocate = $(this).attr("value");
-    let coords = 'lat:' + locations[mapLocate].lat + ', lng:' + locations[mapLocate].lon;
-    console.log(coords);
-    var mapMarker = new H.map.Marker({coords});
+    let latitude = locations[mapLocate].lat;
+    let longitude = locations[mapLocate].lon;
+    var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
     map.addObject(mapMarker);
 
 
