@@ -50,9 +50,8 @@ var rawSearch = '';
     var params = {
         'q': 'food&drink',
         'in': '34.0352762,-118.2448171;r=1500'
-        //  lat + ',' + lng + 'r=1500'
+        //  latitude + ',' + longitude + 'r=1500'
     };
-    // explore.request(params, {}, onResult, onError);
 
     function onResult(data) {
         searchResult = data;
