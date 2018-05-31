@@ -46,20 +46,21 @@ var rawSearch = '';
         useHTTPS: 'true'
     });
     // Search for food and drink
-    // var explore = new H.places.Explore(platform.getPlacesService()), exploreResult, error;
-    // var params = {
-    //     'cat': 'eat-drink',
-    //     'in': '34.0352762,-118.2448171;r=1500'
-    //     //  lat + ',' + lng + 'r=1500'
-    // };
+    var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
+    var params = {
+        'q': 'food&drink',
+        'in': '34.0352762,-118.2448171;r=1500'
+        //  lat + ',' + lng + 'r=1500'
+    };
     // explore.request(params, {}, onResult, onError);
-    // function onResult(data) {
-    //     exploreResult = data;
-    // }
-    // function onError(data) {
-    //     error = data;
-    // }
-    // explore.request(params, {}, onResult, onError);
+
+    function onResult(data) {
+        searchResult = data;
+    }
+    function onError(data) {
+        error = data;
+    }
+    search.request(params, {}, onResult, onError);
     // Basic layout for map
     var defaultLayers = platform.createDefaultLayers();
     var map = new H.Map(
