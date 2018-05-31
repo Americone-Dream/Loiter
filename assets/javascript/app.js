@@ -238,6 +238,26 @@ function navDisplay(){
         }
         let title = result2.performers[i].name;
         let link = result2.performers[i].url;           
+        //venue info
+        // let venueInfo = result2.performers[i].name;
+  
+        // let avgPrice = result2.performers[i].stats.average_price;
+        // let lowPrice = result2.performers[i].stats.lowest_price;
+        // //Long and Lat for map.
+        // let venueLL = result2.performers[i].venue.location;
+        // //push locations into array
+        // locations.push(venueLL);
+        // //event time
+        // let venueTime = result2.performers[i].datetime_utc;
+        // venueTime = moment(venueTime).format('LLLL');
+        // $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
+        // $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
+        // $('#sevent' + i).append(venueZip + '</p><br>');
+        // if (avgPrice !== null || lowPrice !==null){
+        //     $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
+        //     $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
+        // }
+        // $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
     }
