@@ -129,7 +129,6 @@ function searchDisplay(){
             url: queryURL2,
             method: "GET"
         }).then(function(responseSearch) { 
-            console.log(responseSearch);
             if (responseSearch.events[0] == undefined){
                 return;
             }
@@ -231,7 +230,6 @@ function navDisplay(){
         $('#totalResultPageDiv').attr('isShowing','true');       
     }
     navSbar = true;
-    console.log(titleA);
 }
     // ==================
     // || LANDING PAGE ||
@@ -295,30 +293,16 @@ $("#results-autocomplete-input").keydown(function(event){
 
 $(".collapsible-header").click(function(){
     // Set marker
-    console.log(navSbar);
     var mapLocate = $(this).attr("value");
     if (navSbar === false){    
         let latitude = locations[mapLocate].lat;
         let longitude = locations[mapLocate].lon;
         let coords = {lat:latitude, lng:longitude};
-        var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
-
-        var icon = new H.map.Icon('graphics/markerHouse.png'),
-            coords = {lat:latitude, lng:longitude},
-            // location = coords,
-            marker = H.map.Marker(coords, {icon: icon});
-        map.addObject(icon);
-        // var hasMarker = false;
-        // console.log(hasMarker);
-        // if (hasMarker === true){
-        //     map.removeObject(mapMarker);
-        //     console.log(hasMarker);
-        // }
+        var icon = new H.map.Icon('assets/images/anchor2.svg');
+        var mapMarker = new H.map.Marker({lat:latitude, lng:longitude}, { icon: icon });
         map.addObject(mapMarker);
         map.setCenter(coords);
-        map.setZoom(13);
-        // hasMarker = true;
-        // console.log(hasMarker);
+        map.setZoom(15);
         // Search for nearby eateries and bars
         var group = new H.map.Group();
         map.addObject(group);
@@ -351,14 +335,12 @@ $(".collapsible-header").click(function(){
 
 $(".navValue").click(function(){
     var navSearch = $(this).attr("value");
-    console.log(navSearch);
     var queryLocal3 = 'https://api.seatgeek.com/2/performers?taxonomies.name=' + navSearch + '&client_id=MTE2OTc1MDh8MTUyNzEzODIxMC42Mw'
     $.ajax({
         url: queryLocal3,
         method: 'GET'
     }).then(function(responseNav) {
         result2 = responseNav;
-        console.log(result2);
         navDisplay();
     });      
 });    
