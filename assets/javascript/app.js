@@ -308,9 +308,6 @@ $(".collapsible-header").click(function(){
         let coords = {lat:latitude, lng:longitude};
         var icon = new H.map.Icon('assets/images/anchor2.svg');
         var mapMarker = new H.map.Marker({lat:latitude, lng:longitude}, { icon: icon });
-        map.addObject(mapMarker);
-        map.setCenter(coords);
-        map.setZoom(15);
         // Search for nearby eateries and bars
         var group = new H.map.Group();
         map.addObject(group);
@@ -327,11 +324,15 @@ $(".collapsible-header").click(function(){
         }
         function addPlacesToMap(result) {
             group.addObjects(result.items.map(function (place) {
-            var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
+            var icon = new H.map.Icon('assets/images/utensils.svg');
+            var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]}, { icon: icon })
             return marker;
         }));
         }
         search.request(params, {}, onResult, onError);   
+        map.addObject(mapMarker);
+        map.setCenter(coords);
+        map.setZoom(15);
     } else {
         rawSearch = titleA[mapLocate];
         searchDisplay();
