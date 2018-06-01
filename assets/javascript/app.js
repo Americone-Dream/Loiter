@@ -302,6 +302,12 @@ $(".collapsible-header").click(function(){
         let longitude = locations[mapLocate].lon;
         let coords = {lat:latitude, lng:longitude};
         var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
+
+        var icon = new H.map.Icon('graphics/markerHouse.png'),
+            coords = {lat:latitude, lng:longitude},
+            // location = coords,
+            marker = H.map.Marker(coords, {icon: icon});
+        map.addObject(icon);
         // var hasMarker = false;
         // console.log(hasMarker);
         // if (hasMarker === true){
