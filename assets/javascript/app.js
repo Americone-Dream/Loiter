@@ -38,9 +38,10 @@ $(document).ready(function(){
 //========================================================================================================================
 
 locations = new Array();
+titleA = new Array();
 var result = '';
 var rawSearch = '';
-
+var navSbar = false;
 // Map setup
 var platform = new H.service.Platform({
     'app_id': '4pLGlEJpsN5pPookNa3k',
@@ -132,6 +133,7 @@ function searchDisplay(){
             if (responseSearch.events[0] == undefined){
                 return;
             }
+            navSbar = false;
             let collapse = responseSearch.events.length;
             $('#totalLandingPageDiv').hide();
             $("#totalLandingPageDiv").attr("isShowing","false");
@@ -212,8 +214,9 @@ function nearDisplay(){
 }
 function navDisplay(){
     let collapse = result2.performers.length;
-        $('#totalLandingPageDiv').hide();
-        $('#totalResultsPageDiv').slideDown(); 
+    $('#totalLandingPageDiv').hide();
+    $('#totalResultsPageDiv').slideDown(); 
+    titleA = [];
     for (let i = 0; i <= 9; i++) {
         $('#sevent' + i).empty();
         $('#h' + i).slideDown();
@@ -221,34 +224,14 @@ function navDisplay(){
             $('#h' + i).hide();
         }
         let title = result2.performers[i].name;
+        titleA.push(title);
         let link = result2.performers[i].url;           
-        //venue info
-        // let venueInfo = result2.performers[i].name;
-  
-        // let avgPrice = result2.performers[i].stats.average_price;
-        // let lowPrice = result2.performers[i].stats.lowest_price;
-        // //Long and Lat for map.
-        // let venueLL = result2.performers[i].venue.location;
-        // //push locations into array
-        // locations.push(venueLL);
-        // //event time
-        // let venueTime = result2.performers[i].datetime_utc;
-        // venueTime = moment(venueTime).format('LLLL');
-        // $('#sevent' + i).append('<p><b>Venue: </b><br>' + venueInfo + '</p><br>');
-        // $('#sevent' + i).append('<p><b>Address: </b><br>' + venueAddy+ '<br>');
-        // $('#sevent' + i).append(venueZip + '</p><br>');
-        // if (avgPrice !== null || lowPrice !==null){
-        //     $('#sevent' + i).append('<p><b>Average Price: </b>$' + avgPrice+ '</p><br>');
-        //     $('#sevent' + i).append('<p><b>Low Price: </b>$' + lowPrice+ '</p><br>');
-        // }
-        // $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
-        $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
         $('#totalLandingPageDiv').attr('isShowing','false');
-        $('#totalResultPageDiv').attr('isShowing','true');
-
+        $('#totalResultPageDiv').attr('isShowing','true');       
     }
-
+    navSbar = true;
+    console.log(titleA);
 }
     // ==================
     // || LANDING PAGE ||
@@ -312,36 +295,42 @@ $("#results-autocomplete-input").keydown(function(event){
 
 $(".collapsible-header").click(function(){
     // Set marker
+    console.log(navSbar);
     var mapLocate = $(this).attr("value");
-    let latitude = locations[mapLocate].lat;
-    let longitude = locations[mapLocate].lon;
-    let coords = {lat:latitude, lng:longitude};
-    var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
-    map.addObject(mapMarker);
-    map.setCenter(coords);
-    map.setZoom(13);
-    // Search for food and drink
-    var group = new H.map.Group();
-    map.addObject(group);
-    var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
-    var params = {
-        'q': 'food&drink',
-        'in': '34.0352762,-118.2448171;r=1500'
-        // 'in': latitude + ',' + longitude + 'r=1500'
-    };
-    function onResult(data) {
-        addPlacesToMap(data.results);
-    }
-    function onError(data) {
-        error = data;
-    }
-    function addPlacesToMap(result) {
-        group.addObjects(result.items.map(function (place) {
-        var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
-        return marker;
-    }));
-    }
-    search.request(params, {}, onResult, onError);    
+    if (navSbar === false){    
+        let latitude = locations[mapLocate].lat;
+        let longitude = locations[mapLocate].lon;
+        let coords = {lat:latitude, lng:longitude};
+        var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
+        map.addObject(mapMarker);
+        map.setCenter(coords);
+        map.setZoom(13);
+        // Search for food and drink
+        var group = new H.map.Group();
+        map.addObject(group);
+        var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
+        var params = {
+            'q': 'food&drink',
+            'in': '34.0352762,-118.2448171;r=1500'
+            // 'in': latitude + ',' + longitude + 'r=1500'
+        };
+        function onResult(data) {
+            addPlacesToMap(data.results);
+        }
+        function onError(data) {
+            error = data;
+        }
+        function addPlacesToMap(result) {
+            group.addObjects(result.items.map(function (place) {
+            var marker = new H.map.Marker({lat: place.position[0], lng: place.position[1]})
+            return marker;
+        }));
+        }
+        search.request(params, {}, onResult, onError);   
+    } else {
+        rawSearch = titleA[mapLocate];
+        searchDisplay();
+    } 
 });
 // ==================
 // || NAV ITEM API ||
