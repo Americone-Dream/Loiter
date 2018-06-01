@@ -58,7 +58,7 @@ Nick Clear
 
 -Team lead
 
--Front-end design, main designer (CSS, HTML, Materialize, Images, Animation)
+-CSS, HTML, main designer (Materialize, Images, Animation)
 
 -Mobile-responsiveness
 
@@ -68,11 +68,12 @@ Nick Clear
 
 Nirav Patel
 
--Front-end design, main designer (CSS, HTML, Materialize, Images, Animation)
+-CSS, HTML, main designer (Materialize, Images, Animation)
 
 -Mobile-responsiveness
 
 -Refactor Code
+
 -Debugger
 
 
@@ -82,12 +83,15 @@ David Yeung
 -Javascript, main coder (HERE API map content, Seatgeek API)
 
 -Refactor Code
+
 -Debugger
 
 
 
 Johnny C.
 
--Javascript, main coder (jQuery, Interactive and Dynamic website design)
+-Javascript, main coder (jQuery, Interactive and Dynamic design)
+
 -Refactor Code
+
 -Debugger
