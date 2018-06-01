@@ -4,6 +4,16 @@
     cursor: default;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 img,
 li,
 li span,
@@ -12,26 +22,24 @@ li i,
 .collapsible-body,
 .resultsTitleHead,
 .fa-anchor,
+.footerLink,
+#eventsNearMe,
+#results-autocomplete-input,
+#autocomplete-input,
 #navHeaderLogo {
     cursor: pointer;
 }
 
+#results-autocomplete-input:focus,
+#autocomplete-input:focus {
+    cursor: text;
+}
+
+#navDivFluid,
 #landingJumbotron {
-    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
-    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
-    background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
-    margin: none;
-}
-
-#navDivFluid {
-    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
-    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
     background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
 }
 
-#navHeaderLogo {
-    margin: 10% 0;
-}
 
 #navHeaderIcon {
     line-height: 100%;
@@ -39,7 +47,6 @@ li i,
 }
 
 #landingPageNav {
-    /* background: linear-gradient(45deg, rgb(244,67,54, 1), rgb(244,67,54, 0.8)); */
     background: transparent;
     border: none;
     box-shadow: none;
@@ -47,10 +54,22 @@ li i,
     margin: 0 auto;
 }
 
-.landingTitleHead {
+#navHeaderLogo {
+    margin: 10% 0;
+}
+
+/* .landingTitleHead {
     color: white;
     text-align: center;
     font-family: 'Playfair Display', serif;
+} */
+
+.landingTitleHead,
+.resultsTitleHead {
+    color: white;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
 }
 
 .taglineHead {
@@ -72,28 +91,32 @@ hr.pEvents {
     background-image: linear-gradient(to right, #f5f5f5, #00acc1, #f5f5f5);
 }
 
+#landingSearchInput {
+    margin: 0 auto;
+}
+
+#resultsSearchInput {
+     margin: 0 auto;
+     height: 30px;
+}
+
 .card-title{
     font-family:'Montserrat', sans-serif;
 }
 /* added for card height */
-#event0,#event1,#event2{
+/* #event0,#event1,#event2{
     font-size: 20px;
 }
 .card .card-content{
     padding-left: 2px;
     padding-right: 2px;
-}
-/* added for card height */
+} */
 
 .card-image {
     border-radius: 15px 15px 0 0;
 }
 
 .card{
-    /* max-height: 90%;
-    min-height: 70%;
-    min-width: 300px;
-    max-width: 314px; */
     height: 390px;
     width: 314px;
     margin: 8px auto;
@@ -108,7 +131,6 @@ hr.pEvents {
 #eventsNearMe{
     font-size: 20px;
     color: white;
-    cursor: pointer;
 }
 
 .landingInputRow{
@@ -127,14 +149,12 @@ hr.pEvents {
     width: 105px;
     border-radius: 15px;
     text-align: center;
-    /* background: #f44336; */
     background: #00acc1;
     float: right;
 }
-.buyButton{
+/* .buyButton{
     border-radius: 15px;
-    /* margin-top: 20px; */
-}
+} */
 
 #autocomplete-input {
     border: none;
@@ -143,18 +163,17 @@ hr.pEvents {
     box-shadow: none;
     margin-bottom: 0;
     font-size: 20px;
-    cursor: pointer;
 }
 
+/* #results-autocomplete-input:focus,
 #autocomplete-input:focus {
     cursor: text;
-}
+} */
 
 #cardContainerBackground{
     height: 500px;
     background: #f5f5f5;
     height: 100%;
-    /* background: linear-gradient(0deg, rgb(177, 129, 66,1), rgb(210,180,140, .3)); */
 }
 .cardContainer{
     padding-top: 20px;
@@ -162,16 +181,17 @@ hr.pEvents {
     width: 80%;
 }
 
- #searchIcon{
-     /* color: #f44336; */
-     color: #00acc1;
-     padding: 0;
-     margin: 0;
- }
+#searchIcon,
+.resultListItemIcon,
+#resultsSearchIcon {
+    color: #00acc1;
+    padding: 0;
+    margin: 0;
+}
 
-#landingSearchInput {
-     margin: 0 auto;
- }
+/* #landingSearchInput {
+    margin: 0 auto;
+} */
 
  #landingSearchButtonCol {
     margin-top: 4px;
@@ -192,6 +212,7 @@ hr.pEvents {
 
 .buyButton {
     background: #00acc1;
+    border-radius: 15px;
 }
 
 #loiterFooter {
@@ -210,7 +231,6 @@ hr.pEvents {
 .footerLink {
     color: #f5f5f5;
     line-height: 20px;
-    cursor: pointer;
 }
 
 .footerLink:hover {
@@ -224,17 +244,16 @@ hr.pEvents {
 }
 
 #resultsJumbotron {
-    /* background: linear-gradient(45deg, rgb(77, 182, 172, 1), rgb(77, 182, 172, 0.8)); */
     background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
     margin-bottom: 20px;
 }
 
-.resultsTitleHead {
+/* .resultsTitleHead {
     color: white;
     text-align: center;
     font-family: 'Playfair Display', serif;
     margin: 0;
-}
+} */
 
 #resultsHeaderRow {
     margin-bottom: 0;
@@ -253,15 +272,6 @@ hr.pEvents {
     opacity: .7;
 }
 
-/* #searchButton{
-    height: 36px;
-    width: 105px;
-    border-radius: 15px;
-    text-align: center;
-    background: #f44336;
-    float: right;
-} */
-
 #results-autocomplete-input {
     border: none;
     border-bottom: none;
@@ -269,56 +279,29 @@ hr.pEvents {
     box-shadow: none;
     margin-bottom: 0;
     font-size: 15px;
-    cursor: pointer;
 }
 
-#results-autocomplete-input:focus {
+/* #results-autocomplete-input:focus {
     cursor: text;
-}
-
-#resultsSearchIcon {
-    color: #00acc1;
-     /* color: #f44336; */
-    padding: 0;
-    margin: 0;
-}
-
-#resultsSearchInput {
-     margin: 0 auto;
-     height: 30px;
-}
-
-.resultListItemIcon {
-    color: #00acc1;
-}
-
-/* #searchButtonCol {
-    margin-top: 4px;
-    padding: 0;
 } */
 
-/* DELETE THIS CLASS WHEN THE MAP IS ADDED!!!!!! */
-#resultsPlaceholderImg {
-    margin-right: 0;
+/* .resultListItemIcon,
+#resultsSearchIcon {
+    color: #00acc1;
     padding: 0;
-}
+    margin: 0;
+} */
+
+
+/* .resultListItemIcon {
+    color: #00acc1;
+} */
 
 #mapContainer {
     width: 640px;
     height: 480px;
     margin: 0 auto;
 }
-
-/* FOR STICKY FOOTER */
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
 
 @media only screen and (max-width:1200px){
     #mapContainer {
