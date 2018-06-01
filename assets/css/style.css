@@ -36,10 +36,15 @@ li i,
 }
 
 #navDivFluid,
+#resultsJumbotron,
 #landingJumbotron {
     background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
 }
 
+.containerResults {
+    width: 80%;
+    margin-top: 20px;
+}
 
 #navHeaderIcon {
     line-height: 100%;
@@ -63,6 +68,12 @@ li i,
     text-align: center;
     font-family: 'Playfair Display', serif;
 } */
+
+#resultsHeaderRow {
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 
 .landingTitleHead,
 .resultsTitleHead {
@@ -96,9 +107,36 @@ hr.pEvents {
 }
 
 #resultsSearchInput {
-     margin: 0 auto;
-     height: 30px;
+    margin: 0 auto;
+    height: 30px;
 }
+
+::placeholder{
+    color: black;
+    opacity: .7;
+}
+
+#autocomplete-input,
+#results-autocomplete-input {
+    border: none;
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+#autocomplete-input {
+    font-size: 20px;
+}
+
+#results-autocomplete-input {
+    font-size: 15px;
+}
+
+
+
+
+
 
 .card-title{
     font-family:'Montserrat', sans-serif;
@@ -128,6 +166,7 @@ hr.pEvents {
     margin-bottom: 0px;
     width: 100%;
 }
+
 #eventsNearMe{
     font-size: 20px;
     color: white;
@@ -139,9 +178,10 @@ hr.pEvents {
     padding: 9px 10px;
 }
 
-::placeholder{
-    color: black;
-    opacity: .7;
+.resultsInputRow{
+    border:1px,white,solid;
+    border-radius: 15px;
+    margin: 0;
 }
 
 #landingSearchButton{
@@ -152,29 +192,13 @@ hr.pEvents {
     background: #00acc1;
     float: right;
 }
-/* .buyButton{
-    border-radius: 15px;
-} */
-
-#autocomplete-input {
-    border: none;
-    border-bottom: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    margin-bottom: 0;
-    font-size: 20px;
-}
-
-/* #results-autocomplete-input:focus,
-#autocomplete-input:focus {
-    cursor: text;
-} */
 
 #cardContainerBackground{
     height: 500px;
     background: #f5f5f5;
     height: 100%;
 }
+
 .cardContainer{
     padding-top: 20px;
     margin: 0 auto;
@@ -189,14 +213,11 @@ hr.pEvents {
     margin: 0;
 }
 
-/* #landingSearchInput {
-    margin: 0 auto;
-} */
-
- #landingSearchButtonCol {
+#landingSearchButtonCol {
     margin-top: 4px;
     padding: 0;
 }
+
 #link0,
 #link1,
 #link2,
@@ -236,66 +257,6 @@ hr.pEvents {
 .footerLink:hover {
     color: #212121;
 }
-
-/* RESULTS CSS RESULTS CSS RESULTS CSS */
-
-.containerResults {
-    width: 80%;
-}
-
-#resultsJumbotron {
-    background: linear-gradient(45deg, rgb(0, 172, 193, 1), rgb(0, 172, 193, 0.8));
-    margin-bottom: 20px;
-}
-
-/* .resultsTitleHead {
-    color: white;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-} */
-
-#resultsHeaderRow {
-    margin-bottom: 0;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.resultsInputRow{
-    border:1px,white,solid;
-    border-radius: 15px;
-    margin: 0;
-}
-
-::placeholder{
-    color: black;
-    opacity: .7;
-}
-
-#results-autocomplete-input {
-    border: none;
-    border-bottom: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    margin-bottom: 0;
-    font-size: 15px;
-}
-
-/* #results-autocomplete-input:focus {
-    cursor: text;
-} */
-
-/* .resultListItemIcon,
-#resultsSearchIcon {
-    color: #00acc1;
-    padding: 0;
-    margin: 0;
-} */
-
-
-/* .resultListItemIcon {
-    color: #00acc1;
-} */
 
 #mapContainer {
     width: 640px;
