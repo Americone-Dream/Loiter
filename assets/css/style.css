@@ -261,18 +261,18 @@ hr.pEvents {
 @media only screen and (max-width: 650px){
     #mapContainer {
         width: 380px;
-        height: 314px;
+        height: 330px;
     }
 }
 @media only screen and (max-width: 510px){
     #mapContainer {
         width: 300px;
-        height: 300px;
+        height: 320px;
     }
 @media only screen and (max-width: 380px){
     #mapContainer {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 310px;
         }
     }
     #loiterText{
