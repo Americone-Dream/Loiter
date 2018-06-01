@@ -17,18 +17,19 @@ https://seatgeek.com/account/develop
 
 https://developer.here.com/documentation
 
+
 Technologies in Use:
 
 -Materialize
 
 https://materializecss.com/
 
-
 -Moment.js
 
 https://momentjs.com/
 
 -Animate.css
+
 https://daneden.github.io/animate.css/
 
 Contributors:
@@ -52,12 +53,12 @@ https://github.com/2juicy
 
 
 
-Main Group Responsibilities:
+Main Group Contributions:
 
 
 Nick Clear
 
--Team lead
+-Team lead and coordinator
 
 -CSS, HTML, main designer (Materialize, Images, Animation)
 
@@ -73,7 +74,7 @@ Nirav Patel
 
 -Mobile-responsiveness
 
--Refactor Code
+-Refactor code and full stack support
 
 -Debugger
 
@@ -82,6 +83,8 @@ Nirav Patel
 David Yeung
 
 -Javascript, main coder (HERE API map content, Seatgeek API)
+
+-Implemented HERE API map with local nearby events
 
 -Refactor Code
 
@@ -92,6 +95,8 @@ David Yeung
 Johnny C.
 
 -Javascript, main coder (jQuery, Interactive and Dynamic design)
+
+-Implemented landing card display and search functionalities
 
 -Refactor Code
 
