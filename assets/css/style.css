@@ -62,7 +62,6 @@ li i,
 
 #navHeaderLogo {
     margin: 10% 0;
-    font-family: 'Playfair Display';
 }
 
 #resultsHeaderRow {
@@ -75,7 +74,7 @@ li i,
 .resultsTitleHead {
     color: white;
     text-align: center;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Playfair Display', serif;
     margin: 0;
 }
 
