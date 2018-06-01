@@ -311,9 +311,10 @@ $(".collapsible-header").click(function(){
         var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
         var params = {
             'q': 'food&drink',
-            'in': '34.0352762,-118.2448171;r=1500'
-            // 'in': latitude + ',' + longitude + 'r=1500'
+            // 'in': '34.0352762,-118.2448171;r=1500'
+            'in': latitude + ',' + longitude + ';r=1500'
         };
+        console.log(params);
         function onResult(data) {
             addPlacesToMap(data.results);
         }
