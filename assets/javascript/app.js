@@ -22,7 +22,13 @@ $(document).ready(function(){
           "Los Angeles Kings": null,
           "Los Angeles Dodgers": null,
           "Los Angeles Angels": null,
-          "Google": 'https://placehold.it/250x250'
+          "Los Angeles Chargers": null,
+          "Los Angeles Rams": null,
+          "San Diego Padres": null,
+          "San Francisco 49ers": null,
+          "San Francisco Giants": null,
+          "Golden State Warriors": null,
+          "Oakland Raiders": null
         },
         onAutocomplete: function(){
             if($("#totalLandingPageDiv").attr("isShowing") == "true"){

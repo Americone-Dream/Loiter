@@ -1,6 +1,6 @@
-*{
+* {
     box-sizing: border-box;
-    font-family: 'Vollkorn', serif;
+    font-family: 'Cabin', sans-serif;
     cursor: default;
 }
 
@@ -129,7 +129,9 @@ hr.pEvents {
 }
 
 .card-title{
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
 .cardContainer{
