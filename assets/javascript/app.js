@@ -306,14 +306,15 @@ $(".collapsible-header").click(function(){
         map.addObject(mapMarker);
         map.setCenter(coords);
         map.setZoom(13);
-        // Search for food and drink
+        // hasMarker = true;
+        // console.log(hasMarker);
+        // Search for nearby eateries and bars
         var group = new H.map.Group();
         map.addObject(group);
         var search = new H.places.Search(platform.getPlacesService()), searchResult, error;
         var params = {
             'q': 'food&drink',
-            'in': '34.0352762,-118.2448171;r=1500'
-            // 'in': latitude + ',' + longitude + 'r=1500'
+            'in': latitude + ',' + longitude + ';r=1500'
         };
         function onResult(data) {
             addPlacesToMap(data.results);
