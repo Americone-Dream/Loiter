@@ -301,7 +301,8 @@ $(".collapsible-header").click(function(){
         let latitude = locations[mapLocate].lat;
         let longitude = locations[mapLocate].lon;
         let coords = {lat:latitude, lng:longitude};
-        var mapMarker = new H.map.Marker({lat:latitude, lng:longitude});
+        var icon = new H.map.Icon('assets/images/marker.png');
+        var mapMarker = new H.map.Marker({lat:latitude, lng:longitude}, { icon: icon });
         map.addObject(mapMarker);
         map.setCenter(coords);
         map.setZoom(13);
