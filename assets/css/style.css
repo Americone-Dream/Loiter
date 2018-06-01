@@ -279,7 +279,13 @@ hr.pEvents {
         display: none;
     }
     .card{
-        /* height: 390px; */
-        width: 270px;
+        height: 360px;
+        width: 250px;
+    }
+    #event0,#event1,#event2{
+        font-size: 18px;
+    }
+    #title0,#title1,#title2{
+        font-size: 18px;
     }
 }
