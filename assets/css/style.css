@@ -1,6 +1,6 @@
-*{
+* {
     box-sizing: border-box;
-    Font-Family: 'Cabin', Sans-Serif;
+    font-family: 'Cabin', sans-serif;
     cursor: default;
 }
 
@@ -74,7 +74,7 @@ li i,
 .resultsTitleHead {
     color: white;
     text-align: center;
-    Font-Family: 'Roboto Condensed', Sans-Serif;
+    font-family: 'Roboto Condensed', sans-serif;
     margin: 0;
 }
 
@@ -129,7 +129,8 @@ hr.pEvents {
 }
 
 .card-title{
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 28px;
 }
 
 .cardContainer{
