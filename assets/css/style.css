@@ -62,6 +62,7 @@ li i,
 
 #navHeaderLogo {
     margin: 10% 0;
+    font-family: 'Playfair Display';
 }
 
 #resultsHeaderRow {
@@ -131,6 +132,7 @@ hr.pEvents {
 .card-title{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 28px;
+    letter-spacing: 1px;
 }
 
 .cardContainer{
