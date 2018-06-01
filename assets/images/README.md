@@ -1,6 +1,6 @@
-## anchor.svg
+## anchor.svg & utensils.svg
 
-* anchor.svg image is property of FontIcons Inc.
+* image is property of FontIcons Inc.
 * It is licensed under the Creative Commons Attribution 4.0 International license.
 
 ### Links to the license
