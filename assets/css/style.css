@@ -354,6 +354,12 @@ body {
     }
     .card{
         height: 310px;
-        width: 200px;
+        width: 250px;
+    }
+    #event0,#event1,#event2{
+        font-size: 18px;
+    }
+    #title0,#title1,#title2{
+        font-size: 18px;
     }
 }
