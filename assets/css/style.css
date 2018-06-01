@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    font-family: 'Vollkorn', serif;
+    Font-Family: 'Cabin', Sans-Serif;
     cursor: default;
 }
 
@@ -74,7 +74,7 @@ li i,
 .resultsTitleHead {
     color: white;
     text-align: center;
-    font-family: 'Playfair Display', serif;
+    Font-Family: 'Roboto Condensed', Sans-Serif;
     margin: 0;
 }
 
