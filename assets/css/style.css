@@ -279,11 +279,7 @@ hr.pEvents {
         display: none;
     }
     .card{
-<<<<<<< HEAD
-        height: 390px;
-=======
         height: 360px;
->>>>>>> 1d0c871e6e2d40859032b976c003bc914a9b6145
         width: 250px;
     }
     #event0,#event1,#event2{
