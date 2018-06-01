@@ -352,4 +352,8 @@ body {
     #loiterText{
         display: none;
     }
+    .card{
+        height: 310px;
+        width: 200px;
+    }
 }
