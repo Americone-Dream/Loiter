@@ -209,6 +209,8 @@ function nearDisplay(){
         $('#sevent' + i).append('<p><b>Event Time: </b><br>' + venueTime + '</p><br>');
         $('#slink' + i).attr('href', link);
         $('#stitle' + i).text(title);
+        $('#totalLandingPageDiv').attr('isShowing','false');
+        $('#totalResultPageDiv').attr('isShowing','true');   
     }
 }
 function navDisplay(){
