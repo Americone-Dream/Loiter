@@ -271,7 +271,7 @@ hr.pEvents {
     }
 @media only screen and (max-width: 380px){
     #mapContainer {
-        width: 200px;
+        width: 290px;
         height: 310px;
         }
     }
@@ -279,7 +279,7 @@ hr.pEvents {
         display: none;
     }
     .card{
-        height: 310px;
-        width: 200px;
+        /* height: 390px; */
+        width: 270px;
     }
 }
