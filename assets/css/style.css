@@ -63,12 +63,6 @@ li i,
     margin: 10% 0;
 }
 
-/* .landingTitleHead {
-    color: white;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-} */
-
 #resultsHeaderRow {
     margin-bottom: 0;
     padding-top: 15px;
@@ -133,22 +127,21 @@ hr.pEvents {
     font-size: 15px;
 }
 
-
-
-
-
-
 .card-title{
     font-family:'Montserrat', sans-serif;
 }
-/* added for card height */
-/* #event0,#event1,#event2{
-    font-size: 20px;
+
+.cardContainer{
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 80%;
 }
-.card .card-content{
-    padding-left: 2px;
-    padding-right: 2px;
-} */
+
+#cardContainerBackground{
+    height: 500px;
+    background: #f5f5f5;
+    height: 100%;
+}
 
 .card-image {
     border-radius: 15px 15px 0 0;
@@ -159,63 +152,6 @@ hr.pEvents {
     width: 314px;
     margin: 8px auto;
     border-radius: 15px;
-}
-
-.eventsRow{
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    width: 100%;
-}
-
-#eventsNearMe{
-    font-size: 20px;
-    color: white;
-}
-
-.landingInputRow{
-    border: 1px,white,solid;
-    border-radius: 15px;
-    padding: 9px 10px;
-}
-
-.resultsInputRow{
-    border:1px,white,solid;
-    border-radius: 15px;
-    margin: 0;
-}
-
-#landingSearchButton{
-    height: 36px;
-    width: 105px;
-    border-radius: 15px;
-    text-align: center;
-    background: #00acc1;
-    float: right;
-}
-
-#cardContainerBackground{
-    height: 500px;
-    background: #f5f5f5;
-    height: 100%;
-}
-
-.cardContainer{
-    padding-top: 20px;
-    margin: 0 auto;
-    width: 80%;
-}
-
-#searchIcon,
-.resultListItemIcon,
-#resultsSearchIcon {
-    color: #00acc1;
-    padding: 0;
-    margin: 0;
-}
-
-#landingSearchButtonCol {
-    margin-top: 4px;
-    padding: 0;
 }
 
 #link0,
@@ -231,9 +167,54 @@ hr.pEvents {
     transform: translateX(-50%)
 }
 
+#eventsNearMe{
+    font-size: 20px;
+    color: white;
+}
+
+.eventsRow{
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.landingInputRow{
+    border: 1px,white,solid;
+    border-radius: 15px;
+    padding: 9px 10px;
+}
+
+.resultsInputRow{
+    border:1px,white,solid;
+    border-radius: 15px;
+    margin: 0;
+}
+
+#landingSearchButtonCol {
+    margin-top: 4px;
+    padding: 0;
+}
+
+#landingSearchButton{
+    height: 36px;
+    width: 105px;
+    border-radius: 15px;
+    text-align: center;
+    background: #00acc1;
+    float: right;
+}
+
 .buyButton {
     background: #00acc1;
     border-radius: 15px;
+}
+
+#searchIcon,
+.resultListItemIcon,
+#resultsSearchIcon {
+    color: #00acc1;
+    padding: 0;
+    margin: 0;
 }
 
 #loiterFooter {
