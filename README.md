@@ -2,7 +2,7 @@ Loiter Website! Waste your time... in a good way.
 
 Hosted here on Github!
 
-https://americone-dream.github.io/seat_geek-project/
+https://americone-dream.github.io/Loiter/
 
 
 
