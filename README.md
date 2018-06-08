@@ -36,16 +36,13 @@ https://daneden.github.io/animate.css/
 
 
 * Nick Clear
-@nmclear
-https://github.com/nmclear
+[@nmclear](https://github.com/nmclear)
 
 * David Yeung
-@yeungpirate
-https://github.com/yeungpirate
+[@yeungpirate](https://github.com/yeungpirate)
 
 * Nirav Patel
-@nrvpatel3
-https://github.com/nrvpatel03
+[@nrvpatel3](https://github.com/nrvpatel03)
 
 * Johnny C.
 [@2juicy](https://github.com/2juicy)
