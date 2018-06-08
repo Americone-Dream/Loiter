@@ -1,4 +1,4 @@
-Loiter Website! Waste your time... in a good way.
+# Loiter Website! Waste your time... in a good way.
 
 Hosted here on Github!
 
