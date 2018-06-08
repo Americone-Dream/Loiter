@@ -1,103 +1,102 @@
 # Loiter Website! Waste your time... in a good way.
 
-Hosted here on Github!
+### Hosted here on Github!
 
-https://americone-dream.github.io/Loiter/
+[Loiter](https://americone-dream.github.io/Loiter/)
 
 
 
-APIs:
+## APIs
 
--Seatgeek API
+### Seatgeek API
 
 https://seatgeek.com/account/develop
 
 
--HERE API
+### HERE API
 
 https://developer.here.com/documentation
 
 
-Technologies in Use:
+## Technologies in Use
 
--Materialize
+* Materialize
 
 https://materializecss.com/
 
--Moment.js
+* Moment.js
 
 https://momentjs.com/
 
--Animate.css
+* Animate.css
 
 https://daneden.github.io/animate.css/
 
-Contributors:
+## Contributors
 
 
-Nick Clear
+* Nick Clear
 @nmclear
 https://github.com/nmclear
 
-David Yeung
+* David Yeung
 @yeungpirate
 https://github.com/yeungpirate
 
-Nirav Patel
+* Nirav Patel
 @nrvpatel3
 https://github.com/nrvpatel03
 
-Johnny C.
-@2juicy
-https://github.com/2juicy
+* Johnny C.
+[@2juicy](https://github.com/2juicy)
 
 
 
-Main Group Contributions:
+## Main Group Contributions
 
 
-Nick Clear
+### Nick Clear
 
--Team lead and coordinator
+* Team lead and coordinator
 
--CSS, HTML, main designer (Materialize, Images, Animation)
+* CSS, HTML, main designer (Materialize, Images, Animation)
 
--Mobile-responsiveness
+* Mobile-responsiveness
 
--Debugger
-
-
-
-Nirav Patel
-
--CSS, HTML, main designer (Materialize, Images, Animation)
-
--Mobile-responsiveness
-
--Refactor code and full stack support
-
--Debugger
+* Debugger
 
 
 
-David Yeung
+### Nirav Patel
 
--Javascript, main coder (HERE API map content, Seatgeek API)
+* CSS, HTML, main designer (Materialize, Images, Animation)
 
--Implemented HERE API map with local nearby events
+* Mobile-responsiveness
 
--Refactor Code
+* Refactor code and full stack support
 
--Debugger
+* Debugger
 
 
 
-Johnny C.
+### David Yeung
 
--Javascript, main coder (jQuery, Interactive and Dynamic design)
+* Javascript, main coder (HERE API map content, Seatgeek API)
 
--Implemented landing card display and search functionalities
+* Implemented HERE API map with local nearby events
 
--Refactor Code
+* Refactor Code
 
--Debugger
+* Debugger
+
+
+
+### Johnny C.
+
+* Javascript, main coder (jQuery, Interactive and Dynamic design)
+
+* Implemented landing card display and search functionalities
+
+* Refactor Code
+
+* Debugger
