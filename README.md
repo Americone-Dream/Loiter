@@ -39,7 +39,7 @@ https://daneden.github.io/animate.css/
 [@nmclear](https://github.com/nmclear)
 
 * David Yeung
-[@yeungpirate](https://github.com/yeungpirate)
+[@davidyeungcoding](https://github.com/davidyeungcoding)
 
 * Nirav Patel
 [@nrvpatel3](https://github.com/nrvpatel03)
